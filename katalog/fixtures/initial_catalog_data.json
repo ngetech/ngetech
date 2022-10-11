@@ -1,0 +1,62 @@
+[
+    {
+        "model": "katalog.catalogitem",
+        "pk": 1,
+        "fields": {
+            "item_name": "iPhone 12 Pro Max",
+            "item_price": 17999999,
+            "description": "Original from iBox",
+            "item_stock": 3,
+            "rating": 5,
+            "item_url": "https://www.tokopedia.com/ptpratamasemesta/iphone-12-pro-max-garansi-resmi-ibox-silver-256-gb"
+        }
+    },
+    {
+        "model": "katalog.catalogitem",
+        "pk": 2,
+        "fields": {
+            "item_name": "MG Nu Gundam Ver.Ka",
+            "item_price": 1060000,
+            "description": "Bandai Original Ver.Ka Series",
+            "item_stock": 100,
+            "rating": 4,
+            "item_url": "https://www.tokopedia.com/hobbyjapan/mg-nu-gundam-verka"
+        }
+    },
+    {
+        "model": "katalog.catalogitem",
+        "pk": 3,
+        "fields": {
+            "item_name": "Samsung Galaxy S22",
+            "item_price": 12249000,
+            "description": "Specification: Snapdragon 8",
+            "item_stock": 1,
+            "rating": 5,
+            "item_url": "https://www.tokopedia.com/mhi-samsung/samsung-galaxy-s22-8-256gb-black"
+        }
+    },
+    {
+        "model": "katalog.catalogitem",
+        "pk": 4,
+        "fields": {
+            "item_name": "Nike Air Jordan Fasilkom",
+            "item_price": 3799000,
+            "description": "Nike Original Made In China",
+            "item_stock": 20,
+            "rating": 5,
+            "item_url": "https://www.tokopedia.com/807garage/air-jordan-1-mid-multicolour"
+        }
+    },
+    {
+        "model": "katalog.catalogitem",
+        "pk": 5,
+        "fields": {
+            "item_name": "Airpods Pro 3 Official Guarantee from iBox",
+            "item_price": 2999000,
+            "description": "Authorized Reseller",
+            "item_stock": 3,
+            "rating": 4,
+            "item_url": "https://www.tokopedia.com/tokobaruofficial/apple-airpods-3-mme73id-a-garansi-resmi-ibox"
+        }
+    }
+]
