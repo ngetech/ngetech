@@ -1,62 +1,35 @@
-# Template Proyek Django PBP
 
-Pemrograman Berbasis Platform (CSGE602022) - diselenggarakan oleh Fakultas Ilmu Komputer Universitas Indonesia, Semester Ganjil 2022/2023
+## 👨‍💻 Kudos Developer👩‍💻
+- Wayan Angga Putra Aldita (2106650065)
+- Glan Harithteguh (2106752344)
+- Muhamad Naufal Rionatadiraja (2006595942)
+- Bonaventura Galang Kristabel Angipanglipur Hatmasasmita (2106630025)
+- Joselin Permata Aprillia (2106705410)
+- Abdillah Sulthan Naufal Panggabean (2106637555)
 
-*Read this in other languages: [Indonesian](README.md), [English](README.en.md)*
+## 🚀 Situs NgeTech 🚀
+Kunjungi official website kami [di sini](https://ngetech.herokuapp.com/ )
 
-## Pendahuluan
+## 📰 Sekilas Tentang Kami 📰
+NgeTech adalah segala hal yang berkaitan dengan teknologi masa kini. NgeTech menawarkan banyak hal bagi penggunanya mulai dari berbagai informasi mengenai teknologi masa kini, ulasan informasi, hingga forum untuk berdiskusi.
 
-Repositori ini merupakan sebuah template yang dirancang untuk membantu mahasiswa yang sedang mengambil mata kuliah Pemrograman Berbasis Platform (CSGE602022) mengetahui struktur sebuah proyek aplikasi Django serta file dan konfigurasi yang penting dalam berjalannya aplikasi. Kamu dapat dengan bebas menyalin isi dari repositori ini atau memanfaatkan repositori ini sebagai pembelajaran sekaligus awalan dalam membuat sebuah proyek Django.
+Cakupan lingkup NgeTech adalah untuk membuka mata komunitas bahwa teknologi kian tangkas bermigrasi dari budaya terdahulu hingga ke masa kini yang penuh dengan abstraksi. NgeTech menyadari bahwa pusat perputaran teknologi menciptakan generasi baru yang konsumtif terhadap digitalisasi dunia. Dengan demikian, NgeTech hadir dalam dunia yang terdistraksi dengan teknologi untuk mengantar serta membawa revolusi terhadap digitalisasi teknologi sebagai misi dari G20.
 
-## Cara Menggunakan
+> “It's not a faith in technology. It's faith in people.” <br />
+> — Steve Jobs, Co-founder of Apple.
 
-Apabila kamu ingin menggunakan repositori ini sebagai repositori awalan yang nantinya akan kamu modifikasi:
+## 📝 Daftar modul yang akan diimplementasikan 📝
+- User Authentication & Authorization - [Glan](https://github.com/glanharith)
+- Seberapa NgeTech Anda - [Joselin](https://github.com/joselinprmt)
+- Discussion Forum - [Bona](https://github.com/bonaventuragal)
+- Latest Tech Article & User Comment based on Article - [Sulthan](https://github.com/abdillahsulthan)
+- Post Tech Information - [Angga](https://github.com/AnggaPutraa)
 
-1. Buka laman GitHub repositori templat kode, lalu klik tombol "**Use this template**"
-   untuk membuat salinan repositori ke dalam akun GitHub milikmu.
-2. Buka laman GitHub repositori yang dibuat dari templat, lalu gunakan perintah
-   `git clone` untuk menyalin repositorinya ke suatu lokasi di dalam sistem
-   berkas (_filesystem_) komputermu:
 
-   ```shell
-   git clone <URL ke repositori di GitHub> <path ke suatu lokasi di filesystem>
-   ```
-3. Masuk ke dalam repositori yang sudah di-_clone_ dan jalankan perintah berikut
-   untuk menyalakan _virtual environment_:
-
-   ```shell
-   python -m venv env
-   ```
-4. Nyalakan environment dengan perintah berikut:
-
-   ```shell
-   # Windows
-   .\env\Scripts\activate
-   # Linux/Unix, e.g. Ubuntu, MacOS
-   source env/bin/activate
-   ```
-5. Install dependencies yang dibutuhkan untuk menjalankan aplikasi dengan perintah berikut:
-
-   ```shell
-   pip install -r requirements.txt
-   ```
-
-6. Jalankan aplikasi Django menggunakan server pengembangan yang berjalan secara
-   lokal:
-
-   ```shell
-   python manage.py runserver
-   ```
-7. Bukalah `http://localhost:8000` pada browser favoritmu untuk melihat apakah aplikasi sudah berjalan dengan benar.
-
-## Contoh Deployment 
-
-Pada template ini, deployment dilakukan dengan memanfaatkan GitHub Actions sebagai _runner_ dan Heroku sebagai platform Hosting aplikasi. 
-
-Untuk melakukan deployment, kamu dapat melihat instruksi yang ada pada [Tutorial 0](https://pbp-fasilkom-ui.github.io/ganjil-2023/assignments/tutorial/tutorial-0).
-
-Untuk contoh aplikasi Django yang sudah di deploy, dapat kamu akses di [https://django-pbp-template.herokuapp.com/](https://django-pbp-template.herokuapp.com/)
-
-## Credits
-
-Template ini dibuat berdasarkan [PBP Ganjil 2021](https://gitlab.com/PBP-2021/pbp-lab) yang ditulis oleh Tim Pengajar Pemrograman Berbasis Platform 2021 ([@prakashdivyy](https://gitlab.com/prakashdivyy)) dan [django-template-heroku](https://github.com/laymonage/django-template-heroku) yang ditulis oleh [@laymonage, et al.](https://github.com/laymonage). Template ini dirancang sedemikian rupa sehingga mahasiswa dapat menjadikan template ini sebagai awalan serta acuan dalam mengerjakan tugas maupun dalam berkarya.
+## 👥 Role pengguna 👥
+- 🔒 User yang Belum Login 🔒<br />
+   Melihat beberapa detail pada aplikasi seperti Latest Tech Article serta memberikan saran secara langsung kepada kami melalui About Section
+- 🔓 User yang Sudah Login 🔓<br />
+   Memiliki semua access terhadap fitur yang belum login seperti discussion forum, membagikan postingan, serta berkomentar dan bereaksi terhadap postingan user lainnya.
+- 👑 Super User 👑<br />
+   Memiliki access ke berbagai fitur serta privilege dalam hal membuat, membaca, mengupdate, dan menghapus history user maupun konten yang tersedia
