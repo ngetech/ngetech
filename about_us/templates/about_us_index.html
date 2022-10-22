@@ -10,15 +10,16 @@
 
 <main class="mx-auto min-h-[calc(60vh-4rem)] max-w-[1280px] mb-4">
     <!-- About NGETECH Start -->
-    <section id="about-ngetech" class="flex flex-col items-center justify-center h-full w-full py-[200px]">
+    <section id="about-ngetech" class="flex flex-col items-center justify-center h-full w-full mt-[200px] mb-[30vh] ">
         <div class="p-4 mb:p-16 flex mx-8 mb:mx-16">
             <div class="relative mt-20 p-8 md:p-20 rounded-[20px] bg-charcoal-800">
-                <h2 class="mb-3 text-xl font-bold text-start text-white">ABOUT <span class="lg:hidden">NGETECH</span>
+                <h2 class="mb-3 text-xl lg:text-left md:text-center font-bold text-white">ABOUT <span
+                        class="lg:hidden">NGETECH</span>
                 </h2>
                 <div
                     class="hidden absolute top-0 ml-[45px] text-[110px] font-extrabold leading-100 opacity-10 lg:flex text-charcoal-600">
                     NGETECH</div>
-                <p class="my-2 mr-0 md:mr-16 font-normal text-gray-500 dark:text-gray-400">
+                <p class="my-2 lg:text-start lg:ml-auto md:mx-16 md:text-center font-normal text-gray-500 dark:text-gray-400">
                     NgeTech adalah segala hal yang berkaitan dengan teknologi masa kini. NgeTech menawarkan banyak
                     hal bagi penggunanya mulai dari berbagai informasi mengenai teknologi masa kini, ulasan
                     informasi, hingga forum untuk berdiskusi.
@@ -35,37 +36,70 @@
     <!-- About NGETECH End -->
 
     <!-- About Devs Start -->
-    <section id="about-devs" class="flex flex-col items-center justify-center h-full w-full">
-        <div class="p-4 mb:p-16 flex mx-8 mb:mx-16">
-            <div class="relative p-8 md:p-20 rounded-[20px] bg-charcoal-800">
-                <h2 class="mb-3 text-xl font-bold text-start text-white">Meet The <span class="lg:hidden">Devs</span>
-                </h2>
-                <div
-                    class="hidden absolute top-0 ml-[45px] text-[110px] font-extrabold leading-100 opacity-10 lg:flex text-charcoal-600">
-                    DEVELOPERS</div>
-                <div class="relative lg:grid lg:grid-cols-3 xl:grid xl:grid-cols-3 gap-8 flex flex-col justify-center">
-                    <div class=" flex justify-center auto-rows-auto">
-                        <div
-                            class="flex flex-col items-center py-6 px-8 md:max-w-[300px] w-full h-full bg-charcoal-900 rounded-lg shadow-md">
-                            <div class="flex flex-col justify-center items-center">
-                                <img class="mb-3 w-40 h-40 rounded-full shadow-lg"
-                                    src="/docs/images/people/profile-picture-3.jpg" alt="None" />
-                                <h2 class="mb-3 mx-4 font-semibold text-lg text-center text-white">Wayan Angga Putra
-                                    Aldita
-                                </h2>
-                            </div>
-                            <h1 class="text-center text-base font-medium text-gray-500 mt-auto gap-8">Sistem Informasi
-                                2021
-                            </h1>
+    <section id="about-devs" class="flex flex-col items-center justify-center h-full w-full md:px-16 mb-[30vh]">
+        <div class="relative p-[68px] mx-8 md:mx-16 md:w-full rounded-[20px] bg-charcoal-800">
+            <h2 class="mb-3 text-xl font-bold text-center lg:text-left text-white">Meet The <span
+                    class="lg:hidden">Devs</span>
+            </h2>
+            <div
+                class="hidden absolute top-0 ml-[60px] text-[110px] font-extrabold leading-100 opacity-10 lg:flex text-charcoal-600">
+                DEVELOPERS</div>
+            <div
+                class="relative mt-8 lg:grid lg:grid-cols-3 xl:grid xl:grid-cols-3 gap-8 flex flex-col justify-center">
+                <div class=" flex justify-center auto-rows-auto">
+                    <div
+                        class="flex flex-col items-center py-6 px-8 sm:max-w-md md:max-w-lg lg:max-w-[300px] w-full h-full bg-charcoal-900 rounded-lg shadow-md transform transition duration-500 hover:scale-110">
+                        <div class="flex flex-col justify-center items-center">
+                            <img class="mb-3 w-40 h-40 rounded-full shadow-lg" src="{% static 'images/random.jpg' %}"
+                                alt="None" />
+                            <h2 class="mb-3 mx-4 font-semibold text-lg text-center text-white">Wayan Angga Putra
+                                Aldita
+                            </h2>
                         </div>
+                        <h1 class="text-center text-base font-medium text-gray-500 mt-auto gap-8">Sistem Informasi
+                            2021
+                        </h1>
                     </div>
+                </div>
+                <div class=" flex justify-center auto-rows-auto">
+                    <div
+                        class="flex flex-col items-center py-6 px-8 sm:max-w-md md:max-w-lg lg:max-w-[300px] w-full h-full bg-charcoal-900 rounded-lg shadow-md transform transition duration-500 hover:scale-110">
+                        <div class="flex flex-col justify-center items-center">
+                            <img class="mb-3 w-40 h-40 rounded-full shadow-lg" src="{% static 'images/random.jpg' %}"
+                                alt="None" />
+                            <h2 class="mb-3 mx-4 font-semibold text-lg text-center text-white">Glan Harithteguh
+                            </h2>
+                        </div>
+                        <h1 class="text-center text-base font-medium text-gray-500 mt-auto gap-8">Ilmu Komputer
+                            2021
+                        </h1>
+                    </div>
+                </div>
+                <div class=" flex justify-center auto-rows-auto">
+                    <div
+                        class="flex flex-col items-center py-6 px-8 sm:max-w-md md:max-w-lg lg:max-w-[300px] w-full h-full bg-charcoal-900 rounded-lg shadow-md transform transition duration-500 hover:scale-110">
+                        <div class="flex flex-col justify-center items-center">
+                            <img class="mb-3 w-40 h-40 rounded-full shadow-lg" src="{% static 'images/random.jpg' %}"
+                                alt="None" />
+                            <h2 class="mb-3 mx-4 font-semibold text-lg text-center text-white">Bonaventura Galang
+                                Kristabel Angipanglipur Hatmasasmita
+                            </h2>
+                        </div>
+                        <h1 class="text-center text-base font-medium text-gray-500 mt-auto gap-8">Ilmu Komputer
+                            2021
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="col-span-3 flex flex-col lg:flex-row xl:flex-row justify-center gap-8 ">
                     <div class=" flex justify-center auto-rows-auto">
                         <div
-                            class="flex flex-col items-center py-6 px-8 md:max-w-[300px] w-full h-full bg-charcoal-900 rounded-lg shadow-md">
+                            class="flex flex-col items-center py-6 px-8 sm:max-w-md md:max-w-lg lg:max-w-[300px] w-full h-full bg-charcoal-900 rounded-lg shadow-md transform transition duration-500 hover:scale-110">
                             <div class="flex flex-col justify-center items-center">
                                 <img class="mb-3 w-40 h-40 rounded-full shadow-lg"
-                                    src="/docs/images/people/profile-picture-3.jpg" alt="None" />
-                                <h2 class="mb-3 mx-4 font-semibold text-lg text-center text-white">Glan Harithteguh
+                                    src="{% static 'images/random.jpg' %}" alt="None" />
+                                <h2 class="mb-3 mx-4 font-semibold text-lg text-center text-white">Joselin Permata
+                                    Aprillia
                                 </h2>
                             </div>
                             <h1 class="text-center text-base font-medium text-gray-500 mt-auto gap-8">Ilmu Komputer
@@ -75,55 +109,20 @@
                     </div>
                     <div class=" flex justify-center auto-rows-auto">
                         <div
-                            class="flex flex-col items-center py-6 px-8 md:max-w-[300px] w-full h-full bg-charcoal-900 rounded-lg shadow-md">
+                            class="flex flex-col items-center py-6 px-8 sm:max-w-md md:max-w-lg lg:max-w-[300px] w-full h-full bg-charcoal-900 rounded-lg shadow-md transform transition duration-500 hover:scale-110">
                             <div class="flex flex-col justify-center items-center">
                                 <img class="mb-3 w-40 h-40 rounded-full shadow-lg"
-                                    src="/docs/images/people/profile-picture-3.jpg" alt="None" />
-                                <h2 class="mb-3 mx-4 font-semibold text-lg text-center text-white">Bonaventura Galang
-                                    Kristabel Angipanglipur Hatmasasmita
+                                    src="{% static 'images/random.jpg' %}" alt="None" />
+                                <h2 class="mb-3 mx-4 font-semibold text-lg text-center text-white">Abdillah Sulthan
+                                    Naufal Panggabean
                                 </h2>
                             </div>
-                            <h1 class="text-center text-base font-medium text-gray-500 mt-auto gap-8">Ilmu Komputer
+                            <h1 class="text-center text-base font-medium text-gray-500 mt-auto gap-8">Sistem
+                                Informasi
                                 2021
                             </h1>
                         </div>
                     </div>
-
-                    <div class="col-span-3 flex flex-col lg:flex-row xl:flex-row justify-center gap-8 ">
-                        <div class=" flex justify-center auto-rows-auto">
-                            <div
-                                class="flex flex-col items-center py-6 px-8 md:max-w-[300px] w-full h-full bg-charcoal-900 rounded-lg shadow-md">
-                                <div class="flex flex-col justify-center items-center">
-                                    <img class="mb-3 w-40 h-40 rounded-full shadow-lg"
-                                        src="/docs/images/people/profile-picture-3.jpg" alt="None" />
-                                    <h2 class="mb-3 mx-4 font-semibold text-lg text-center text-white">Joselin Permata
-                                        Aprillia
-                                    </h2>
-                                </div>
-                                <h1 class="text-center text-base font-medium text-gray-500 mt-auto gap-8">Ilmu Komputer
-                                    2021
-                                </h1>
-                            </div>
-                        </div>
-                        <div class=" flex justify-center auto-rows-auto">
-                            <div
-                                class="flex flex-col items-center py-6 px-8 md:max-w-[300px] w-full h-full bg-charcoal-900 rounded-lg shadow-md">
-                                <div class="flex flex-col justify-center items-center">
-                                    <img class="mb-3 w-40 h-40 rounded-full shadow-lg"
-                                        src="/docs/images/people/profile-picture-3.jpg" alt="None" />
-                                    <h2 class="mb-3 mx-4 font-semibold text-lg text-center text-white">Abdillah Sulthan
-                                        Naufal Panggabean
-                                    </h2>
-                                </div>
-                                <h1 class="text-center text-base font-medium text-gray-500 mt-auto gap-8">Sistem
-                                    Informasi
-                                    2021
-                                </h1>
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
             </div>
         </div>
