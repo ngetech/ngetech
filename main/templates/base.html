@@ -11,9 +11,13 @@
   {% endblock meta %}
 </head>
 
-<body>
+{% include 'navbar.html' %}
+
+<body class="bg-charcoal-900">
   {% block content %}
   {% endblock content %}
 </body>
+
+{% include 'footer.html' %}
 
 </html>
