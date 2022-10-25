@@ -1,23 +1,30 @@
-{% extends 'base.html' %}
 
-{% block meta %}
-<title>Login</title>
-{% endblock meta %}
+{% load static %}
+{% load tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% tailwind_css %}
+  {% block meta %}
+  {% endblock meta %}
+</head>
+<body class="bg-charcoal-900">
 
-{% block content %}
-<div class="flex justify-center items-center w-screen h-screen bg-gray-900">
+<div class="flex justify-center items-center w-screen h-screen bg-charcoal-900">
     <div
-        class="p-4 w-full max-w-md bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+        class="p-4 w-full max-w-md bg-charcoal-800 rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
         <form method="POST" action="" class="rounded px-2 pt-6 pb-8 dark:bg-gray-800 dark:border-gray-700">
-            <h1 class="text-center text-2xl font-bold text-gray-900 dark:text-gray-300">Login</h1>
+            <h1 class="text-center text-2xl font-bold text-blue-600 dark:text-gray-300">Login</h1>
             {% csrf_token %}
             <div class="mt-4">
-                <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Username</label>
+                <label for="username" class="block mb-2 text-sm font-medium text-gray-400 dark:text-gray-300">Username</label>
             </div>
             <input type="text" name="username" placeholder="Username" required
                 class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             <div class="mt-4">
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Username</label>
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-400 dark:text-gray-300">Password</label>
             </div>
             <input type="password" name="password" placeholder="Password" required
                 class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -35,10 +42,15 @@
                     Login
                 </button>
             </div>
-            <h1 class="mt-2 text-gray-900 text-base text-center dark:text-gray-300">Don't have an account yet? <a class="text-blue-600"
-                    href="{% url 'todolist:register' %}">Create Account</a></h1>
+            <h1 class="mt-2 text-gray-400 text-base text-center dark:text-gray-300">Don't have an account yet? <a class="text-blue-600"
+                    href="{% url 'main:register' %}">Create Account</a></h1>
         </form>
     </div>
 </div>
+</body>
 
-{% endblock content %}
+{% include 'footer.html' %}
+</html>
+
+
+
