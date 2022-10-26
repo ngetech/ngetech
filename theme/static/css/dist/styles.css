@@ -803,16 +803,8 @@ select {
   left: 0px;
 }
 
-.top-\[6vh\] {
-  top: 6vh;
-}
-
 .top-\[8vh\] {
   top: 8vh;
-}
-
-.top-\[7vh\] {
-  top: 7vh;
 }
 
 .z-20 {
@@ -829,14 +821,6 @@ select {
 
 .m-6 {
   margin: 1.5rem;
-}
-
-.m-2 {
-  margin: 0.5rem;
-}
-
-.m-4 {
-  margin: 1rem;
 }
 
 .mx-auto {
@@ -877,21 +861,6 @@ select {
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
-}
-
-.mx-1 {
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
-}
-
-.mx-\[10px\] {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.mx-\[1px\] {
-  margin-left: 1px;
-  margin-right: 1px;
 }
 
 .mb-4 {
@@ -1024,10 +993,6 @@ select {
   height: 4rem;
 }
 
-.h-8 {
-  height: 2rem;
-}
-
 .h-6 {
   height: 1.5rem;
 }
@@ -1062,10 +1027,6 @@ select {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-8 {
-  width: 2rem;
 }
 
 .w-6 {
@@ -1153,6 +1114,14 @@ select {
   gap: 2rem;
 }
 
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
 .gap-3 {
   gap: 0.75rem;
 }
@@ -1185,6 +1154,10 @@ select {
 
 .whitespace-nowrap {
   white-space: nowrap;
+}
+
+.break-words {
+  overflow-wrap: break-word;
 }
 
 .rounded-\[20px\] {
@@ -1240,14 +1213,14 @@ select {
   background-color: rgb(21 23 24 / var(--tw-bg-opacity));
 }
 
-.bg-charcoal-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(15 17 18 / var(--tw-bg-opacity));
-}
-
 .bg-blue-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+
+.bg-charcoal-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 17 18 / var(--tw-bg-opacity));
 }
 
 .bg-gray-50 {
@@ -1268,11 +1241,6 @@ select {
 .bg-charcoal-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(24 26 30 / var(--tw-bg-opacity));
-}
-
-.bg-charcoal-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(85 86 92 / var(--tw-bg-opacity));
 }
 
 .p-4 {
@@ -1318,6 +1286,11 @@ select {
   padding-bottom: 0.5rem;
 }
 
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .py-16 {
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -1343,24 +1316,23 @@ select {
   padding-right: 0.5rem;
 }
 
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
 .py-2\.5 {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
 }
 
-.px-7 {
-  padding-left: 1.75rem;
-  padding-right: 1.75rem;
-}
-
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.pt-24 {
+  padding-top: 6rem;
 }
 
 .pb-2 {
@@ -1391,8 +1363,16 @@ select {
   padding-left: 0.75rem;
 }
 
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
 .text-center {
   text-align: center;
+}
+
+.align-middle {
+  vertical-align: middle;
 }
 
 .font-serif {
@@ -1514,14 +1494,9 @@ select {
   color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
-.placeholder-charcoal-600::-moz-placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(85 86 92 / var(--tw-placeholder-opacity));
-}
-
-.placeholder-charcoal-600::placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(85 86 92 / var(--tw-placeholder-opacity));
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .opacity-10 {
@@ -1546,9 +1521,14 @@ select {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.ring-blue-500 {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity));
+.blur-sm {
+  --tw-blur: blur(4px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.blur-lg {
+  --tw-blur: blur(16px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .filter {
@@ -1699,11 +1679,6 @@ select {
   .dark\:bg-blue-600 {
     --tw-bg-opacity: 1;
     background-color: rgb(37 99 235 / var(--tw-bg-opacity));
-  }
-
-  .dark\:bg-gray-800 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(31 41 55 / var(--tw-bg-opacity));
   }
 
   .dark\:text-gray-400 {
@@ -1925,6 +1900,11 @@ select {
   .md\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 
   .md\:font-medium {
