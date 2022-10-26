@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Post Tech</title>
+{% endblock meta %}
+
+{% block content %}
+
+<style>
+    .accordion-content {
+        transition: max-height 0.3s ease-out, padding 0.3s ease;
+    }
+</style>
+
+<main class="mx-auto mt-[10vh] mb-[25vh] min-h-[calc(60vh-4rem)] max-w-[160vh]">
+
+    <!-- Header Start -->
+    <section>
+        <div class="flex flex-col items-center">
+            <h2 class="text-5xl font-bold text-center text-white pt-12 mx-8">“It's not a faith in technology. It's faith
+                in
+                people.”</h2>
+            <div class="flex items-center space-x-4 pt-4">
+                <img class="w-12 h-12 rounded-full"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtv7xMjq3sUsAHQvYlio7pd5YbFnuKTOnb4sSkhH4&s"
+                    alt="">
+                <div class="font-medium dark:text-white">
+                    <div>Steve Jobs</div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400">Co-founder of Apple.</div>
+                </div>
+            </div>
+            <p class="pt-4 text-center mx-8 text-gray-400">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into
+                electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of
+                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+                Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+            <a href="{% url 'post-tech:add-post-tech' %}">
+                <button type="button"
+                    class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 font-medium rounded-lg text-base px-8 py-2 my-4 mr-2 focus:ring-blue-800">
+                    Shares Youre Experience !
+                </button>
+            </a>
+        </div>
+    </section>
+    <!-- Header End -->
+
+</main>
+
+<script>
+
+</script>
+
+{% endblock content %}
