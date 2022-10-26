@@ -22,4 +22,5 @@ urlpatterns = [
     path('about-us/', include('about_us.urls')),
     path('post-tech/', include('post_tech.urls')),
     path('admin/', admin.site.urls),
+    path('discussion/', include('discussion_forum.urls')),
 ]
