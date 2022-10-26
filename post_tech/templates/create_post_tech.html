@@ -24,20 +24,20 @@
                     <label for="Title" class="block mb-2 text-sm font-medium text-white">
                         Post Title
                     </label>
-                    <input type="text" id="title" aria-describedby="helper-text-explanation"
+                    <input type="text" name="title" id="title" aria-describedby="helper-text-explanation" maxlength="160"
                         class="bg-charcoal-800 border border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Add a title here...">
                 </div>
                 <div class="mb-6">
-                    <label for="content" class="block mb-2 text-sm font-medium text-white">
+                    <label for="description" class="block mb-2 text-sm font-medium text-white">
                         What Would You Wanna Share Today
                     </label>
-                    <textarea id="content" rows="18"
+                    <textarea id="description" name="description" rows="18"
                         class="block p-2.5 w-full text-sm rounded-lg border  bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                         placeholder="Tell us what are those..." required=""></textarea>
 
                 </div>
-                <button type="submit"
+                <button type="submit" value="Submit"
                     class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     Go Public !
                 </button>
