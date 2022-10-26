@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<main class="mx-auto mt-[10vh] mb-[25vh] min-h-[calc(60vh-4rem)] max-w-[160vh]">
+<main class="mx-auto mt-[10vh] mb-[10vh] min-h-[calc(60vh-4rem)] max-w-[160vh]">
     <!-- Header Start -->
     <section id="post-header" class="mb-6">
         <div class="flex flex-col items-center">
@@ -20,7 +20,7 @@
                     alt="">
                 <div class="font-medium dark:text-white">
                     <div>Steve Jobs</div>
-                    <div class="text-sm text-gray-500 dark:text-gray-400">Co-founder of Apple.</div>
+                    <div class="text-sm text text-gray-400">Co-founder of Apple.</div>
                 </div>
             </div>
             <p class="pt-4 text-center mx-8 text-gray-400">
@@ -36,7 +36,7 @@
             <a href="{% url 'post-tech:add-post-tech' %}">
                 <button type="button"
                     class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 font-medium rounded-lg text-base px-8 py-2 my-4 mr-2 focus:ring-blue-800">
-                    Shares Youre Experience With Us !
+                    Shares Youre Experience With Us
                 </button>
             </a>
         </div>
@@ -45,11 +45,23 @@
 
     <!-- Users Post Start -->
     <section id="users-post" class="mx-4">
-        
-        <div id="post-tech-container" class="columns-1 md:columns-2 lg:columns-2 content-center gap-4 space-y-8">
-
+        <div class="relative {% if not user.is_authenticated  %} h-[50vh] overflow-hidden rounded-xl {% endif %}">
+            <div id="post-tech-container"
+                class="relative columns-1 md:columns-2 lg:columns-2 content-center gap-4 space-y-8{% if not user.is_authenticated  %} blur-sm {% endif %}">
+            </div>
+            {% if not user.is_authenticated %}
+            <div class="inset-x-0 bottom-0 flex justify-center bg-gradient-to-t pt-32 pb-8 pointer-events-none from-gray-800 absolute">
+            </div>
+            <div class="flex flex-col gap-2 top-0 lg:bottom-0 lg:top-auto h-full lg:h-auto mb-6 absolute w-full justify-center items-center md:text-xl">
+                <a href="{% url 'main:login' %}">
+                    <button type="button"
+                        class="text-white bg-blue-500 px-8 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Show More...
+                    </button>
+                </a>
+            </div>
+            {% endif %}
         </div>
-
 
     </section>
     <!-- Users Post End -->
@@ -93,7 +105,7 @@
                                             <mask id="svgIDa"><path fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M15 8C8.925 8 4 12.925 4 19c0 11 13 21 20 23.326C31 40 44 30 44 19c0-6.075-4.925-11-11-11c-3.72 0-7.01 1.847-9 4.674A10.987 10.987 0 0 0 15 8Z"/>
                                             </mask><path fill="#ff1212" d="M0 0h48v48H0z" mask="url(#svgIDa)"/>
                                         </svg>
-                                        <h2 class="font-semibold text-white">66</h2>
+                                        <h2 class="font-semibold text-white">${res[i].fields.likes.length}</h2>
                                     </div>
                                 </div>
                                 <h5 class="my-2 text-2xl font-bold tracking-tight text-white">

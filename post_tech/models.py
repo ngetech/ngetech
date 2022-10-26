@@ -15,6 +15,11 @@ class PostTech(models.Model):
         max_length=160
     )
     description = models.TextField()
+    likes = models.ManyToManyField(
+        User,
+        blank=True,
+        related_name='likes' 
+    )
     date = models.DateField(
         auto_now=True
     )

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block meta %}
-<title>Post Here</title>
+<title>Create Tech Post</title>
 {% endblock meta %}
 
 {% block content %}
@@ -37,7 +37,7 @@
                         placeholder="Tell us what are those..." required=""></textarea>
 
                 </div>
-                <button type="submit" value="Submit"
+                <button id="button-submit-post-tech" type="submit" value="Submit"
                     class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     Go Public !
                 </button>
@@ -48,7 +48,27 @@
 
 </main>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <script>
+
+    function userPostTech() {
+        $.post(
+            {
+                url: 'add-post-tech/',
+                data: {
+                    'title': $('#title'),
+                    'description': $('#description')
+                },
+                success: window.location.href = "post_tech_index.html"
+            }
+        )
+    }
+
+    $('#button-submit-post-tech').attr(
+        'onclick',
+        `userPostTech`   
+    )
 
 </script>
 

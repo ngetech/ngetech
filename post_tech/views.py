@@ -2,11 +2,12 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 
 from post_tech.models import PostTech
 
-@login_required(login_url='/login/')
+# @login_required(login_url='/login/')
 def show_post_tech(request):
     return render(
         request,
@@ -14,12 +15,13 @@ def show_post_tech(request):
     )
 
 def get_tech_post(request):
-    posts = PostTech.objects.all()
+    posts = PostTech.objects.order_by('?')
     return HttpResponse(serializers.serialize('json', posts),
         content_type='application/json'
     )
 
 @login_required(login_url='/login/')
+@csrf_exempt
 def add_post_tech(request):
     if request.method == 'POST':
         user = request.user
