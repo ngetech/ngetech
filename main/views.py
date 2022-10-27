@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import datetime
-from django.http import HttpRequest, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.contrib import messages

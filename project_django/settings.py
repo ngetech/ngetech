@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_browser_reload',
     'main',
     'about_us',
+    'post_tech',
     'discussion_forum'
 ]
 
