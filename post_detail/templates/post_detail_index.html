@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Post Detail</title>
+{% endblock meta %}
+
+{% block content %}
+
+<main class="mx-auto mt-[15vh] mb-[8vh] min-h-[calc(60vh-4rem)] max-w-[160vh]">
+
+    <!-- Tech Form Start -->
+    <section>
+        <div class="mx-auto max-w-[1028px] text-center">
+            <h5 class="mb-2 text-2x font-bold text-white">{{ post.title }}</h5>
+            <p class="my-4 mx-16 font-normal text-gray-400">
+                {{ post.description }}
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <div class="m-6 p-4 lg:p-8 rounded-xl bg-charcoal-700">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="mb-6">
+                    <input type="text" name="post_id" id="post_id" value={{ post.id }} class="hidden">
+                </div>
+                <div id="comment-container">
+                </div>
+                <div class="mb-6">
+                    <label for="comment" class="block mb-2 text-sm font-medium text-white">
+                        Comment
+                    </label>
+                    <textarea id="comment" name="comment" rows="4"
+                        class="block p-2.5 w-full text-sm rounded-lg border  bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Tell us what are those..." required></textarea>
+
+                </div>
+                <button id="button-submit-post-comment" type="submit" value="Submit"
+                    class="mt-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Post Comment !
+                </button>
+            </form>
+        </div>
+    </section>
+    <!-- Tech Form End -->
+
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    const currentPostId = $('#post_id').val();
+    function postComment() {
+        if ($('#comment').val()) {
+            console.log('object');
+            $.post({
+                url: `../add-post-comment/`,
+                type: 'post',
+                data: {
+                    'post_id': currentPostId,
+                    'comment': $('#comment').val()
+                },
+                success: getUserComment
+            })
+        }
+    }
+    $(`#button-submit-post-comment`).attr(
+        'onclick',
+        `postComment()`
+    );
+
+    function getUserComment() {
+        $('#comment-container').empty();
+        $.get(
+            '../post-comment-json',
+            (response) => {
+                console.log(response);
+                for (let i = 0; i < response.length; i++) {
+                    if (response[i].fields.post == currentPostId) {
+                        let dateObj = new Date(response[i].fields.created_on);
+                        let date = dateObj.toString().slice(0, 16)
+                        $('#comment-container').append(
+                            `<div
+                                class="aspect-video py-2 px-4 mb-4 rounded-lg break-inside-avoid bg-charcoal-800">
+                                <div class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32">
+                                        <path fill="none"
+                                            d="M8.007 24.93A4.996 4.996 0 0 1 13 20h6a4.996 4.996 0 0 1 4.993 4.93a11.94 11.94 0 0 1-15.986 0ZM20.5 12.5A4.5 4.5 0 1 1 16 8a4.5 4.5 0 0 1 4.5 4.5Z" />
+                                        <path fill="#2563eb"
+                                            d="M26.749 24.93A13.99 13.99 0 1 0 2 16a13.899 13.899 0 0 0 3.251 8.93l-.02.017c.07.084.15.156.222.239c.09.103.187.2.28.3c.28.304.568.596.87.87c.092.084.187.162.28.242c.32.276.649.538.99.782c.044.03.084.069.128.1v-.012a13.901 13.901 0 0 0 16 0v.012c.044-.031.083-.07.128-.1c.34-.245.67-.506.99-.782c.093-.08.188-.159.28-.242c.302-.275.59-.566.87-.87c.093-.1.189-.197.28-.3c.071-.083.152-.155.222-.24ZM16 8a4.5 4.5 0 1 1-4.5 4.5A4.5 4.5 0 0 1 16 8ZM8.007 24.93A4.996 4.996 0 0 1 13 20h6a4.996 4.996 0 0 1 4.993 4.93a11.94 11.94 0 0 1-15.986 0Z" />
+                                    </svg>
+                                    <div class="flex flex-col min-w-0">
+                                        <p class="text-base font-base text-white truncate">
+                                            <span class="font-medium text-blue-500">@${response[i].fields.username}</span> ${response[i].fields.comment}
+                                        </p>
+                                        <p class=" text-gray-400 text-sm">
+                                            ${date}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>`
+                        )
+                    }
+                }
+            }
+        )
+    }
+    getUserComment()
+</script>
+
+{% endblock content %}
