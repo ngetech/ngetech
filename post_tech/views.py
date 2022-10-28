@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 from post_tech.models import PostTech
 
@@ -14,6 +14,8 @@ def show_post_tech(request):
         'post_tech_index.html'
     )
 
+@login_required(login_url='/login/')
+@csrf_exempt
 def get_tech_post(request):
     posts = PostTech.objects.order_by('?')
     return HttpResponse(serializers.serialize('json', posts),
@@ -40,3 +42,24 @@ def add_post_tech(request):
         'create_post_tech.html',
         {}
     )
+
+@login_required(login_url='/login/')
+@csrf_exempt
+def add_likes(request, key):
+    if request.method == 'POST':
+        post = PostTech.objects.get(pk=key)
+        is_like = False
+
+        for like in post.likes.all():
+            if like == request.user:
+                is_like = True
+                break
+        
+        if not is_like:
+            post.likes.add(request.user)
+        
+        if is_like:
+            post.likes.remove(request.user)
+
+        return JsonResponse({'error': False})
+
