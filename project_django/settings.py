@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'about_us',
     'post_tech',
     'discussion_forum',
-    'tech_survey'
+    'post_detail',
+    'tech_survey',
 ]
 
 MIDDLEWARE = [

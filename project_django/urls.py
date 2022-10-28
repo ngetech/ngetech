@@ -23,5 +23,6 @@ urlpatterns = [
     path('post-tech/', include('post_tech.urls')),
     path('admin/', admin.site.urls),
     path('discussion/', include('discussion_forum.urls')),
+    path('post-detail/', include('post_detail.urls')),
     path('tech-survey/', include('tech_survey.urls')),
 ]
