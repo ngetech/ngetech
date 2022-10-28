@@ -83,7 +83,7 @@
                     console.log();
                     $('#post-tech-container').append(
                         `<a href="../post-detail/user-post-detail/${res[i].pk}">
-                            <div class="aspect-video p-8 mb-4 rounded-lg break-inside-avoid bg-charcoal-800 hover:bg-charcoal-700">
+                            <div class="aspect-video p-8 mb-4 rounded-lg break-inside-avoid bg-charcoal-800 {% if user.is_authenticated %} hover:bg-charcoal-700 {% endif %}">
                                 <div class="flex items-center gap-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
                                         preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32">

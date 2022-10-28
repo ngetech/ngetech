@@ -7,14 +7,12 @@ from django.http import HttpResponse, JsonResponse
 
 from post_tech.models import PostTech
 
-# @login_required(login_url='/login/')
 def show_post_tech(request):
     return render(
         request,
         'post_tech_index.html'
     )
 
-@login_required(login_url='/login/')
 @csrf_exempt
 def get_tech_post(request):
     posts = PostTech.objects.order_by('?')
