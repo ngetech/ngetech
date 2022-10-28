@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Tech Survey</title>
+{% endblock meta %}
+
+{% block content %}
+<style>
+    table {
+        background-color: rgb(21 23 24);
+        color: rgb(156 163 175);
+        border-radius: 0.75rem; /* 8px */
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#tech_form").submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                data: $(this).serialize(),
+                type: $(this).attr('method'),
+                url: $(this).attr('action'),
+                success: function (json) {
+                    console.log(json);
+                    $("#result").html(json.result);
+                },
+                error: function (request, status, error) {
+                    console.log(request.responseText);
+                }
+            });
+        });
+    })
+
+</script>
+
+<main class="mx-auto mt-[10vh] mb-[10vh] min-h-[calc(60vh-4rem)] max-w-[160vh]">
+    <!-- Header Judul Start -->
+    <section class="mb-30">
+        <div class="flex flex-col items-center">
+            <h2 class="text-5xl font-bold text-center text-white pt-12 mx-8 mb-4">
+                Seberapa NGE<span class="text-blue-600">TECH</span> Kamu?</h2>
+            <h3 class="mb-4 mt-2 px-8 text-xl font-bold text-center text-gray-400">
+                Cari tahu sekarang dengan menjawab beberapa pertanyaan berikut!</h3>
+        </div>
+    </section>
+    <!-- Header Judul End -->
+
+    <!-- Form Start -->
+    <div class="flex flex-col overflow-auto px-4 my-8">
+        <form action="{% url 'tech_survey:result-json' %}" method="POST" id="tech_form" class="form">
+            {% csrf_token %}
+            <table class="w-full max-w-4xl mx-auto">
+                <thead>
+                    <tr>
+                        <th class="p-4 text-xs tracking-wide" style="width: 50%">Pertanyaan</th>
+                        <th class="p-4 text-xs tracking-wide" style="width: 12.5%">Tidak pernah</th>
+                        <th class="p-4 text-xs tracking-wide" style="width: 12.5%">Jarang</th>
+                        <th class="p-4 text-xs tracking-wide" style="width: 12.5%">Lumayan</th>
+                        <th class="p-4 text-xs tracking-wide" style="width: 12.5%">Sangat sering</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for field in form %}
+                    <tr>
+                        <td class="p-4 text-sm">
+                            <label for="{{ field.auto_id }}">{{ field.label }}</label></th>
+
+                        {% for choice in field %}
+                        <td class="text-center align-middle">{{ choice }}</th>
+                        {% endfor %}
+
+                    </tr>
+                    {% endfor %}
+
+                    <!-- Hasil Survey Start --> 
+                    <tr class="text-center">
+                        <td class="p-4 text-lg font-semibold tracking-wide">Hasil</td>
+                        <td colspan='4' class="text-center font-weight-bold text-blue-600" id='result'></td>
+                    </tr>
+                    <!-- Hasil Survey End -->
+                </tbody>
+            </table>
+            <input class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+                type="submit" value="Lihat hasil">
+        </form>
+    </div>
+    <!-- Form End -->
+
+    <!-- Last Result Start -->
+    {% if not user.is_authenticated %}
+        <div class="flex flex-col items-center mt-16">
+            <p class="text-white font-sm my-4">Login untuk melihat riwayat hasil survey.</p>
+            <a href="{% url 'main:login' %}"><button type="button"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-3 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Login
+            </button>
+        </div>
+    {% endif %}
+
+    <div class="flex flex-col items-center px-4 relative {% if not user.is_authenticated  %} blur-sm {% endif %}">
+        <a href="#" class="block p-6 w-full rounded-lg shadow-md {% if user.is_authenticated  %} hover:bg-gray-100 {% endif %}">
+            <h5 class="mb-2 text-2xl font-bold text-white">Hasil Tech Survey Terakhir</h5>
+            <p class="font-normal text-white">{{ riwayat.result }}</p>
+            <p class="font-normal text-gray-400">Diambil pada {{ riwayat.date }}</p>
+          </a>
+        </a>
+    </div>
+    <!-- Last Result End -->
+
+</main>
+
+{% endblock content %}
