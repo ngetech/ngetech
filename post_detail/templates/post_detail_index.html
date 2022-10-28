@@ -12,6 +12,7 @@
     <!-- Tech Form Start -->
     <section>
         <div class="m-6 p-4 lg:p-8 rounded-xl bg-charcoal-700">
+            <input type="text" name="current_login_id" id="current_login_id" value={{ user.pk }} class="hidden">
             <h2 class="text-2xl text-center font-bold text-white">{{ post.title }}</h2>
             <h2 class="text-base text-center font-semibold text-white mb-4">Posted by <span class="text-blue-500">
                     @{{ post.user }}</span></h2>
@@ -19,23 +20,20 @@
             <div class="flex items-center gap-3">
                 <div class="flex-1 min-w-0">
                     <h2 class="text-gray-500 ">Published on {{ post.date }}</h2>
-                    <h2 class="text-blue-500"><span id="likes-container">{{ post.likes.count }}</span> liked this post
-                    </h2>
                 </div>
-                <div class="inline-flex items-center text-base gap-2">
-                    <button type="button" id="like-button"
-                        class="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 -ml-1 w-5 h-5" fill="none"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z" />
-                        </svg>
+                <div class="inline-flex items-center text-base p-2 rounded-full bg-charcoal-800">
+                    <button type="button" id="like-button">
+                        <div class="flex flex-row justify-center items-center gap-1">
+                            <h2 id="likes-container" class="text-blue-500 mx-2 text-lg font-semibold">{{
+                                post.likes.count }}</h2>
+                            <div id="svg-love-container" class="mx-2">
 
-                        Leave a like
+                            </div>
                     </button>
                 </div>
             </div>
             <a href="/../post-tech/" class="my-2 flex justify-center text-sm text-blue-500">Explore Other Post</a>
+        </div>
         </div>
     </section>
 
@@ -71,6 +69,9 @@
 
 <script>
     const currentPostId = $('#post_id').val();
+    const currentLoginId = $('#current_login_id').val();
+
+
     function postComment() {
         if ($('#comment').val()) {
             console.log('object');
@@ -96,7 +97,6 @@
             '../post-comment-json',
             (response) => {
                 for (let i = 0; i < response.length; i++) {
-                    // console.log(response[i].fields);
                     if (response[i].fields.post == currentPostId) {
                         let dateObj = new Date(response[i].fields.created_on);
                         let date = dateObj.toString().slice(0, 16)
@@ -135,6 +135,21 @@
                 for (let i = 0; i < response.length; i++) {
                     if (response[i].pk == currentPostId) {
                         document.getElementById('likes-container').innerHTML = response[i].fields.likes.length
+                        $('#svg-love-container').empty();
+                        if (response[i].fields.likes.includes(Number(currentLoginId))) {
+                            $('#svg-love-container').append(`
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-2 -ml-1 w-5 h-5" viewBox="0 0 16 16">
+                                <path fill="#FF1212" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                            </svg>
+                            `);
+                        } else {
+                            $('#svg-love-container').append(`
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mr-2 -ml-1 w-5 h-5" viewBox="0 0 16 16">
+                                <path fill="#FFFFFF" d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                            </svg>
+                            `);
+                        }
+
                     }
                 }
             }
