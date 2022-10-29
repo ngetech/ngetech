@@ -10,12 +10,92 @@
 <main class="mx-auto mt-[10vh] mb-[10vh] min-h-[calc(60vh-4rem)] max-w-[160vh]">
 
     <!-- Features Section Start -->
-    <section id="features" class="py-8">
+    <section id="feature-top-5" class="m-6 p-4 lg:p-8">
         <div class="py-2 md:py-8 pb-10 flex flex-col items-center justify-center">
             <h1 class="text-4xl font-bold text-blue-600">Top 5 Post</h1>
-            <h1 class="mt-2 text-sm font-semibold text-center text-gray-400">Kami menawarkan anda 5 informasi terhangat mengenai teknologi yang sedang <span
-                class="italic">demanding</span> di masa kini</h1>
-            <div class="my-8 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-8 group" id="post-container">
+            <h1 class="mt-2 text-sm font-semibold text-center text-gray-400">Kami menawarkan anda 5 informasi terhangat
+                mengenai teknologi yang sedang <span class="italic">demanding</span> di masa kini</h1>
+            <div class="my-8 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-8 w-full group"
+                id="post-container">
+
+                
+
+                <!-- <div class="relative flex flex-wrap flex-col p-8 bg-charcoal-800 rounded-lg shadow-md min-h-[25vh] lg:row-span-2">
+                    <div class="flex-wrap justify-start items-start">
+                        <h5 class="mb-2 text-3xl font-semibold tracking-tight text-white">2</h5>
+                        <p class="text-justify text-gray-400 mb-4">
+                            Lorem Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+                            1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                            specimen book. It has survived not only five centuries, but also the leap into electronic
+                            typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                            release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap mt-auto gap-8">
+                        <a href="../post-detail/user-post-detail/${res[i].pk}"
+                            class="inline-flex items-center text-blue-600 hover:underline">Show article...</a>
+                    </div>
+                </div>
+
+                <div class="relative flex flex-wrap flex-col p-8 bg-charcoal-800 rounded-lg shadow-md min-h-[25vh] lg:row-span-2">
+                    <div class="flex-wrap justify-start items-start">
+                        <h5 class="mb-2 text-3xl font-semibold tracking-tight text-white">3</h5>
+                        <p class="text-justify text-gray-400 mb-4">
+                            Lorem Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+                            1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                            specimen book. It has survived not only five centuries, but also the leap into electronic
+                            typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                            release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap mt-auto gap-8">
+                        <a href="../post-detail/user-post-detail/${res[i].pk}"
+                            class="inline-flex items-center text-blue-600 hover:underline">Show article...</a>
+                    </div>
+                </div>
+
+                <div class="relative flex flex-wrap flex-col p-8 bg-charcoal-800 rounded-lg shadow-md min-h-[25vh] lg:row-span-1">
+                    <div class="flex-wrap justify-start items-start">
+                        <h5 class="mb-2 text-3xl font-semibold tracking-tight text-white">4</h5>
+                        <p class="text-justify text-gray-400 mb-4">
+                            Lorem Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+                            1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                            specimen book. It has survived not only five centuries, but also the leap into electronic
+                            typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                            release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap mt-auto gap-8">
+                        <a href="../post-detail/user-post-detail/${res[i].pk}"
+                            class="inline-flex items-center text-blue-600 hover:underline">Show article...</a>
+                    </div>
+                </div>
+                
+                <div class="relative flex flex-wrap flex-col p-8 bg-charcoal-800 rounded-lg shadow-md min-h-[25vh] lg:col-span-2">
+                    <div class="flex-wrap justify-start items-start">
+                        <h5 class="mb-2 text-3xl font-semibold tracking-tight text-white">5</h5>
+                        <p class="text-justify text-gray-400 mb-4">
+                            Lorem Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+                            1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                            specimen book. It has survived not only five centuries, but also the leap into electronic
+                            typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                            release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap mt-auto gap-8">
+                        <a href="../post-detail/user-post-detail/${res[i].pk}"
+                            class="inline-flex items-center text-blue-600 hover:underline">Show article...</a>
+                    </div>
+                </div> -->
+
             </div>
         </div>
     </section>
@@ -25,25 +105,44 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
+    const spanLayout = [
+        'lg:col-span-2',
+        'lg:row-span-2',
+        'lg:row-span-2',
+        'lg:row-span-1',
+        'lg:col-span-2',
+
+    ]
+
     function getTop5() {
         $.get(
             './top-post-json',
             (res) => {
                 $('#post-container').empty();
-                if(res.length >= 5) {
+                if (res.length >= 5) {
                     for (let i = 0; i < 5; i++) {
                         let dateObj = new Date(res[i].fields.date);
                         let date = dateObj.toString().slice(0, 16)
-                        console.log();
+                        console.log(res);
                         $('#post-container').append(
-                            `<div
-                            class="flex flex-wrap flex-col p-6 w-80 bg-charcoal-800 rounded-lg group-hover:blur-sm hover:!blur-none group-hover:scale-[0.85] hover:!scale-100 duration-300 cursor-pointer shadow-md">
+                            `<div class="relative flex flex-wrap flex-col p-8 bg-charcoal-800 rounded-lg shadow-md min-h-[25vh] ${spanLayout[i]} group-hover:blur-sm hover:!blur-none group-hover:scale-[0.50] hover:!scale-100 duration-300 cursor-pointer">
                                 <div class="flex-wrap justify-start items-start">
-                                    <h2 class="text-gray-400 font-bold text-4xl mb-2">#${i+1}</h2>
                                     <h5 class="mb-2 text-3xl font-semibold tracking-tight text-white">${res[i].fields.title}</h5>
+                                    <h5 class="mb-2 text-sm font-semibold tracking-tight text-gray-500">Published by <span class="text-blue-500">@${res[i].fields.username}</span></h5>
+                                    <h5 class="mb-2 text-sm font-semibold tracking-tight text-blue-500">${res[i].fields.likes.length} likes Techser this post!</h5>
+                                    <p class="text-justify text-gray-400 mb-4">
+                                        Lorem Ipsum is simply dummy text of the printing and
+                                        typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+                                        1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                                        specimen book. It has survived not only five centuries, but also the leap into electronic
+                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                                        release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                                        publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                    </p>
                                 </div>
-                                <div class="flex flex-wrap mt-auto gap-8">
-                                    <a href="../post-detail/user-post-detail/${res[i].pk}" class="inline-flex items-center text-blue-600 hover:underline">Show article...</a>
+                                <div class="flex flex-wrap gap-8">
+                                    <a href="../post-detail/user-post-detail/${res[i].pk}"
+                                        class="inline-flex items-center text-blue-600 hover:underline">See people reaction...</a>
                                 </div>
                             </div>`
                         );
@@ -58,7 +157,7 @@
                             `<div
                             class="flex flex-wrap flex-col p-6 w-80 bg-charcoal-800 rounded-lg group-hover:blur-sm hover:!blur-none group-hover:scale-[0.85] hover:!scale-100 duration-300 cursor-pointer shadow-md">
                                 <div class="flex-wrap justify-start items-start">
-                                    <h2 class="text-gray-400 font-bold text-4xl mb-2">#${i+1}</h2>
+                                    <h2 class="text-gray-400 font-bold text-4xl mb-2">#${i + 1}</h2>
                                     <h5 class="mb-2 text-3xl font-semibold tracking-tight text-white">${res[i].fields.title}</h5>
                                 </div>
                                 <div class="flex flex-wrap mt-auto gap-8">

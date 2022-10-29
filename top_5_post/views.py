@@ -1,9 +1,7 @@
 from django.shortcuts import render
 from post_tech.models import PostTech
-from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 
 # Create your views here.
 def show_top5_post(request):
