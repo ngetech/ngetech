@@ -2,7 +2,9 @@
     class="px-2 sm:px-4 py-2.5 bg-charcoal-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <a href="/" class="flex items-center">
-            <h2 class="text-xl font-bold text-white">NGE<span class="text-blue-600">TECH</span></h2>
+            <!-- <h2 class="text-xl font-bold text-white">NGE<span class="text-blue-600">TECH</span></h2> -->
+            {% load static %}
+            <img src="{% static 'img/ngetech_logo.png' %}" class="mr-3 h-6 sm:h-9" alt="Ngetech logo">
         </a>
         <div class="flex md:order-2">
             {% if not user.is_authenticated %}
