@@ -828,6 +828,14 @@ select {
   grid-column: span 3 / span 3;
 }
 
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
+.row-span-1 {
+  grid-row: span 1 / span 1;
+}
+
 .m-8 {
   margin: 2rem;
 }
@@ -879,6 +887,16 @@ select {
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+}
+
+.mx-10 {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.mx-9 {
+  margin-left: 2.25rem;
+  margin-right: 2.25rem;
 }
 
 .mb-4 {
@@ -2251,6 +2269,14 @@ select {
 
   .lg\:max-w-\[300px\] {
     max-width: 300px;
+  }
+
+  .lg\:max-w-\[300vh\] {
+    max-width: 300vh;
+  }
+
+  .lg\:max-w-\[40vh\] {
+    max-width: 40vh;
   }
 
   .lg\:columns-2 {
