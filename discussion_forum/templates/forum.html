@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block meta %}
+<script type="text/javascript" src="{% static 'js/forum.js' %}"></script>
+{% endblock meta %}
+
+{% block content %}
+<div class="flex flex-col gap-4 p-8 pt-24">
+  <h1 class="font-bold text-2xl text-white">Discussion Forum</h1>
+  <div class="flex">
+    <a href="{% url 'discussion_forum:create-discussion' %}" class="text-white bg-blue-600 px-8 py-2 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm text-center mr-3 md:mr-0">
+      Start A Discussion
+    </a>
+  </div>
+
+  <div id="forum" class="flex flex-col md:flex-row flex-wrap gap-4 text-white">
+  </div>
+
+</div>
+{% endblock content %}

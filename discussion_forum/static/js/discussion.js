@@ -1,36 +1,38 @@
-const createDiscussionPost = (data) => {
+const createReplyCard = (data, loggedUser) => {
     return `<div class="flex flex-col bg-charcoal-800 rounded-lg p-4 break-words">
-      <p class="italic font-bold text-gray-400">${data.user[0]}</p>
-      <p>${data.content}</p>
+      <p class="font-bold text-blue-600">${(data.user == loggedUser) ? 'You' : "@" + data.user}</p>
+      <p class="text-white">${data.content}</p>
+      <p class="text-gray-500">On ${data.date}</p>
     </div>`;
 }
 
-const loadDiscussion = () => {
-    $.get("/discussion/get-discussion/", (data) => {
-        for (var i = 0; i < data.length; i++) {
-            const post = createDiscussionPost(data[i].fields);
-            $("#forum").append(post);
+const postReply = (pk) => {
+    $.post(`/discussion/${pk}/replies/add/`, {
+        content: $("#content-field").val(),
+        csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
+    },
+    (data, status) => {
+        console.log(data)
+        $("#replies").append(createReplyCard(data.reply, data.user));
+        $("#content-field").val("");
+    });
+}
+
+const getReplies = (pk) => {
+    $.get(`/discussion/${pk}/replies/`, (data) => {
+        for(var i = 0; i < data.replies.length; i++){
+            $("#replies").append(createReplyCard(data.replies[i], data.user));
         }
     });
 }
 
-const postDiscussion = () => {
-    $.post("/discussion/post-discussion-forum/", {
-        content: $("#content-field").val(),
-        csrfmiddlewaretoken: "{{ csrf_token }}"
-    },
-        (data, status) => {
-            const post = createDiscussionPost(data[0].fields);
-            $("#forum").append(post);
-            $("#content-field").val("");
-        });
-}
-
 $(document).ready(() => {
-    loadDiscussion();
+    const pk = $("#main-discussion").attr("pk");
 
-    $('#post-discussion').click(() => {
-        postDiscussion();
+    getReplies(pk);
+
+    $('#post-reply').click(() => {
+        postReply(pk);
         return false;
     });
 });

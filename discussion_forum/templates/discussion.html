@@ -6,38 +6,47 @@
 <script type="text/javascript" src="{% static 'js/discussion.js' %}"></script>
 {% endblock meta %}
 
+{% load filters %}
 
 {% block content %}
-{% load filters %}
 <div class="flex flex-col gap-4 p-8 pt-24">
-  <h1 class="font-bold text-2xl text-white">Discussion Forum</h1>
   
-  <div id="forum" class="flex flex-col gap-4 text-white">
+  <div class="flex flex-col bg-charcoal-800 rounded-lg p-4 break-words gap-2" id="main-discussion" pk="{{ discussion.pk }}">
+    <h1 class="font-bold text-2xl text-white">{{ discussion.title }}</h1>
+    <p class="text-white">{{ discussion.content }}</p>
+    <p class="text-gray-500">Started by <span class="text-blue-600 font-medium">@{{ discussion.user }}</span> on {{ discussion.date }}</p>
   </div>
 
   <div class="flex flex-col relative">
     <form class="flex flex-col gap-2 {% if not user.is_authenticated  %} blur-sm {% endif %}">
       {% csrf_token %}
   
-        <p class="font-semibold text-white">Join the <span class="text-blue-600">discussion</span>, {{ user.username }}!</p>
-  
-        {{ form.content|addclass:"rounded" }}
-      
-        <div class="flex">
-          <button id="post-discussion" class="rounded bg-blue-600 text-white py-2 px-4">Post</button>
-        </div>
-      </form>
-      {% if not user.is_authenticated %}
-        <div class="flex flex-col md:flex-row gap-2 top-0 pb-4 absolute h-full w-full justify-center items-center md:text-xl">
-          <p class="text-black font-semibold">Join the <span class="text-blue-600">discussion</span>!</p>
-          <a href="{% url 'main:login' %}">
-            <button type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-3 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Login
-            </button>
-        </a>
-        </div>
-      {% endif %}
+      <p class="font-semibold text-white">Join the <span class="text-blue-600">discussion</span>, {{ user.username }}!</p>
+
+      {{ form.content|addclass:"rounded-lg bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" }}
+    
+      <div class="flex">
+        <button id="post-reply" class="rounded bg-blue-600 text-white py-2 px-4 text-right">Post</button>
+      </div>
+    </form>
+
+    {% if not user.is_authenticated %}
+      <div class="flex flex-col md:flex-row gap-2 top-0 pb-4 absolute h-full w-full justify-center items-center md:text-xl">
+        <p class="text-white font-semibold">Join the <span class="text-blue-600">discussion</span>!</p>
+        <a href="{% url 'main:login' %}">
+          <button type="button"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-3 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              Login
+          </button>
+      </a>
+      </div>
+    {% endif %}
+  </div>
+
+  <p class="text-white text-xl font-medium">Replies</p>
+
+  <div id="replies" class="flex flex-col gap-2">
+
   </div>
 </div>
 
