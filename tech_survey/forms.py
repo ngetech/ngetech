@@ -27,3 +27,18 @@ class TechSurveyForm(forms.Form):
         label='Saya menyadari dan mendukung pentingnya Transformasi Digital di era perkembangan digital saat ini.',
         choices=CHOICES,
         widget=forms.RadioSelect(attrs={'class': ''}))
+
+    que_6 = forms.ChoiceField(
+        label='Saya siap akan konsekuensi bahwa apa yang saya tulis di media sosial dapat diakses banyak orang dan dapat meninggalkan jejak digital.',
+        choices=CHOICES,
+        widget=forms.RadioSelect(attrs={'class': ''}))
+
+    que_7 = forms.ChoiceField(
+        label='Saya terbiasa mengkaji ulang dan memeriksa kebenaran informasi yang saya temui di media digital.',
+        choices=CHOICES,
+        widget=forms.RadioSelect(attrs={'class': ''}))
+
+    que_8 = forms.ChoiceField(
+        label='Saya memanfaatkan proses digitalisasi dalam kehidupan sehari-hari, contohnya dalam bertransaksi online, digital learning, dan lain-lain.',
+        choices=CHOICES,
+        widget=forms.RadioSelect(attrs={'class': ''}))

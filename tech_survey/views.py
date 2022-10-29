@@ -21,16 +21,18 @@ def get_result_json(request):
         form = TechSurveyForm(request.POST)
         if form.is_valid():
             form_data = form.cleaned_data
-            skor = int(form_data['que_1']) + int(form_data['que_2']) + int(form_data['que_3']) + int(form_data['que_4']) + int(form_data['que_5'])
+            skor = int(form_data['que_1']) + int(form_data['que_2']) + int(form_data['que_3']) + int(
+                form_data['que_4']) + int(form_data['que_5']) + int(form_data['que_6']) + int(
+                form_data['que_7']) + int(form_data['que_8'])
             date = datetime.date.today()
-            
-            if skor >= 12:
+
+            if skor >= 20:
                 result = "Sobat Ngetech abiez!"
-            elif skor >= 9:
+            elif skor >= 15:
                 result = "Tech enthusiasts"
-            elif skor >= 6:
+            elif skor >= 10:
                 result = "Great start!"
-            elif skor >= 3:
+            elif skor >= 5:
                 result = "Ngetech lagi yuk!"
             else:
                 result = "Kurang ngetech"
