@@ -828,14 +828,6 @@ select {
   grid-column: span 3 / span 3;
 }
 
-.col-span-1 {
-  grid-column: span 1 / span 1;
-}
-
-.row-span-1 {
-  grid-row: span 1 / span 1;
-}
-
 .m-8 {
   margin: 2rem;
 }
@@ -889,16 +881,6 @@ select {
   margin-right: 0.5rem;
 }
 
-.mx-10 {
-  margin-left: 2.5rem;
-  margin-right: 2.5rem;
-}
-
-.mx-9 {
-  margin-left: 2.25rem;
-  margin-right: 2.25rem;
-}
-
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -927,8 +909,8 @@ select {
   margin-bottom: 30vh;
 }
 
-.mt-\[16vh\] {
-  margin-top: 16vh;
+.mt-\[1vh\] {
+  margin-top: 1vh;
 }
 
 .mt-auto {
@@ -989,34 +971,6 @@ select {
 
 .mt-\[10vh\] {
   margin-top: 10vh;
-}
-
-.mt-\[1vh\] {
-  margin-top: 1vh;
-}
-
-.mt-\[10px\] {
-  margin-top: 10px;
-}
-
-.mt-\[2px\] {
-  margin-top: 2px;
-}
-
-.mt-\[100vh\] {
-  margin-top: 100vh;
-}
-
-.mt-\[18vh\] {
-  margin-top: 18vh;
-}
-
-.mt-\[8vh\] {
-  margin-top: 8vh;
-}
-
-.mt-\[12vh\] {
-  margin-top: 12vh;
 }
 
 .block {
@@ -1580,8 +1534,8 @@ select {
   font-size: 110px;
 }
 
-.text-\[80px\] {
-  font-size: 80px;
+.text-\[60px\] {
+  font-size: 60px;
 }
 
 .text-lg {
@@ -1617,10 +1571,6 @@ select {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
-}
-
-.text-\[60px\] {
-  font-size: 60px;
 }
 
 .font-bold {
@@ -2047,8 +1997,8 @@ select {
     margin-bottom: 30vh;
   }
 
-  .md\:mt-\[18vh\] {
-    margin-top: 18vh;
+  .md\:mt-\[1\.5vh\] {
+    margin-top: 1.5vh;
   }
 
   .md\:mr-0 {
@@ -2061,26 +2011,6 @@ select {
 
   .md\:mt-0 {
     margin-top: 0px;
-  }
-
-  .md\:mt-\[10vh\] {
-    margin-top: 10vh;
-  }
-
-  .md\:mt-\[8vh\] {
-    margin-top: 8vh;
-  }
-
-  .md\:mt-\[2vh\] {
-    margin-top: 2vh;
-  }
-
-  .md\:mt-\[1vh\] {
-    margin-top: 1vh;
-  }
-
-  .md\:mt-\[1\.5vh\] {
-    margin-top: 1.5vh;
   }
 
   .md\:flex {
@@ -2165,8 +2095,8 @@ select {
     padding-bottom: 1rem;
   }
 
-  .md\:text-\[100px\] {
-    font-size: 100px;
+  .md\:text-\[80px\] {
+    font-size: 80px;
   }
 
   .md\:text-xl {
@@ -2177,10 +2107,6 @@ select {
   .md\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
-  }
-
-  .md\:text-\[80px\] {
-    font-size: 80px;
   }
 
   .md\:font-medium {
@@ -2271,14 +2197,6 @@ select {
     max-width: 300px;
   }
 
-  .lg\:max-w-\[300vh\] {
-    max-width: 300vh;
-  }
-
-  .lg\:max-w-\[40vh\] {
-    max-width: 40vh;
-  }
-
   .lg\:columns-2 {
     -moz-columns: 2;
          columns: 2;
@@ -2306,10 +2224,6 @@ select {
 
   .lg\:text-start {
     text-align: start;
-  }
-
-  .lg\:text-\[120px\] {
-    font-size: 120px;
   }
 
   .lg\:text-\[100px\] {
