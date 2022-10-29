@@ -1,4 +1,5 @@
 import json
+import datetime
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse
 from .forms import TechSurveyForm
@@ -21,7 +22,8 @@ def get_result_json(request):
         if form.is_valid():
             form_data = form.cleaned_data
             skor = int(form_data['que_1']) + int(form_data['que_2']) + int(form_data['que_3']) + int(form_data['que_4']) + int(form_data['que_5'])
-
+            date = datetime.date.today()
+            
             if skor >= 12:
                 result = "Sobat Ngetech abiez!"
             elif skor >= 9:
