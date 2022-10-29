@@ -36,7 +36,7 @@
             <a href="{% url 'post-tech:add-post-tech' %}">
                 <button type="button"
                     class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 font-medium rounded-lg text-base px-8 py-2 my-4 mr-2 focus:ring-blue-800">
-                    Shares Youre Experience With Us
+                    Shares Your Experience With Us
                 </button>
             </a>
         </div>
@@ -82,8 +82,8 @@
                     let date = dateObj.toString().slice(0, 16)
                     console.log();
                     $('#post-tech-container').append(
-                        `<a href="#">
-                            <div class="aspect-video p-8 mb-4 rounded-lg break-inside-avoid bg-charcoal-800 hover:bg-charcoal-700">
+                        `<a href="../post-detail/user-post-detail/${res[i].pk}">
+                            <div class="aspect-video p-8 mb-4 rounded-lg break-inside-avoid bg-charcoal-800 {% if user.is_authenticated %} hover:bg-charcoal-700 {% endif %}">
                                 <div class="flex items-center gap-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
                                         preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32">
