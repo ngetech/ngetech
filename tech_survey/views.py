@@ -1,4 +1,4 @@
-from django.shortcuts import render
+import json
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse
 from .forms import TechSurveyForm
@@ -44,4 +44,4 @@ def get_result_json(request):
             return JsonResponse({'result': result})
         else:
             return JsonResponse({'error': form.errors})
-    return redirect('tech_survey:show_tech_survey')
+    return redirect('tech_survey:show-tech-survey')
