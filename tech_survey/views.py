@@ -23,7 +23,7 @@ def get_result_json(request):
             skor = int(form_data['que_1']) + int(form_data['que_2']) + int(form_data['que_3']) + int(form_data['que_4']) + int(form_data['que_5'])
 
             if skor >= 12:
-                result = "Sobat Ngetech abiez"
+                result = "Sobat Ngetech abiez!"
             elif skor >= 9:
                 result = "Tech enthusiasts"
             elif skor >= 6:
@@ -41,7 +41,8 @@ def get_result_json(request):
                 else:
                     riwayat = HasilTechSurvey(owner=request.user, result=result)
                     riwayat.save()
-            return JsonResponse({'result': result})
+                date = riwayat.date
+            return JsonResponse({'result': result, 'date': date})
         else:
             return JsonResponse({'error': form.errors})
     return redirect('tech_survey:show-tech-survey')

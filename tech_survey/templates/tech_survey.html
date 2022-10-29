@@ -27,6 +27,8 @@
                 success: function (json) {
                     console.log(json);
                     $("#result").html(json.result);
+                    $("#history").html(json.result);
+                    $("#historydate").html(json.date);
                 },
                 error: function (request, status, error) {
                     console.log(request.responseText);
@@ -102,12 +104,15 @@
     {% endif %}
 
     <div class="flex flex-col items-center px-4 relative {% if not user.is_authenticated  %} blur-sm {% endif %}">
-        <a href="#" class="block p-6 w-full rounded-lg shadow-md {% if user.is_authenticated  %} hover:bg-gray-100 {% endif %}">
-            <h5 class="mb-2 text-2xl font-bold text-white">Hasil Tech Survey Terakhir</h5>
-            <p class="font-normal text-white">{{ riwayat.result }}</p>
-            <p class="font-normal text-gray-400">Diambil pada {{ riwayat.date }}</p>
-          </a>
-        </a>
+        <div class="block p-6 w-full rounded-lg shadow-md bg-charcoal-800">
+            <button class="text-white bg-blue-700 hover:bg-blue-800 text-sm font-semibold px-4 py-1 mb-2 rounded-full inline-flex items-center">
+                <img width="15" height="15" src="{% static 'images/unlocked-logo.png' %}" alt="None"/>
+                <span class="mx-2">Users only</span>
+            </button>
+            <h5 class="mt-2 text-2xl font-bold text-white">Hasil Tech Survey Terakhir</h5>
+            <p class="py-2 text-lg font-semibold text-blue-600" id="history">{{ riwayat.result }}</p>
+            <p class="font-normal text-gray-400">Diambil pada <span id="historydate">{{ riwayat.date }}<span></p>
+        </div>
     </div>
     <!-- Last Result End -->
 
