@@ -8,5 +8,6 @@ def show_top5_post(request):
     return render(request,'top_5.html')
     
 def get_top5_post(request):
-    posts = PostTech.objects.all().order_by('-likes')[:5]
+    posts = list(PostTech.objects.all())
+    # ut.sort(key=lambda x: x.count, reverse=True)
     return HttpResponse(serializers.serialize('json', posts),content_type='application/json')
