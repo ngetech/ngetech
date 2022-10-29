@@ -10,7 +10,8 @@
     table {
         background-color: rgb(21 23 24);
         color: rgb(156 163 175);
-        border-radius: 0.75rem; /* 8px */
+        border-radius: 0.75rem;
+        /* 8px */
         box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     }
 </style>
@@ -55,7 +56,7 @@
     <div class="flex flex-col overflow-auto px-4 my-8">
         <form action="{% url 'tech_survey:result-json' %}" method="POST" id="tech_form" class="form">
             {% csrf_token %}
-            <table class="w-full max-w-4xl mx-auto">
+            <table class="w-full mx-auto">
                 <thead>
                     <tr>
                         <th class="p-4 text-xs tracking-wide" style="width: 50%">Pertanyaan</th>
@@ -67,52 +68,58 @@
                 </thead>
                 <tbody>
                     {% for field in form %}
-                    <tr>
-                        <td class="p-4 text-sm">
+                    <tr class="w-full">
+                        <td class="pl-8 py-4 pr-4 text-sm">
                             <label for="{{ field.auto_id }}">{{ field.label }}</label></th>
 
-                        {% for choice in field %}
+                            {% for choice in field %}
                         <td class="text-center align-middle">{{ choice }}</th>
-                        {% endfor %}
+                            {% endfor %}
 
                     </tr>
                     {% endfor %}
 
-                    <!-- Hasil Survey Start --> 
+                    <!-- Hasil Survey Start -->
                     <tr class="text-center">
                         <td class="p-4 text-lg font-semibold tracking-wide">Hasil</td>
                         <td colspan='4' class="text-center font-weight-bold text-blue-600" id='result'></td>
                     </tr>
                     <!-- Hasil Survey End -->
+                    
                 </tbody>
             </table>
-            <input class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
-                type="submit" value="Lihat hasil">
+            <button type="submit" value="Lihat Hasil"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline my-4 w-full rounded-lg">
+                Lihat Hasil
+            </button>
         </form>
     </div>
     <!-- Form End -->
 
     <!-- Last Result Start -->
-    {% if not user.is_authenticated %}
-        <div class="flex flex-col items-center mt-16">
-            <p class="text-white font-sm my-4">Login untuk melihat riwayat hasil survey.</p>
-            <a href="{% url 'main:login' %}"><button type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-3 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Login
-            </button></a>
-        </div>
-    {% endif %}
-
-    <div class="flex flex-col items-center px-4 relative {% if not user.is_authenticated  %} blur-sm {% endif %}">
-        <div class="block p-6 w-full rounded-lg shadow-md bg-charcoal-800">
-            <button class="text-white bg-blue-700 hover:bg-blue-800 text-sm font-semibold px-4 py-1 mb-2 rounded-full inline-flex items-center">
-                <img width="15" height="15" src="{% static 'images/unlocked-logo.png' %}" alt="None"/>
+    <div class=" flex flex-col items-center px-4 relative ">
+        <div
+            class="block p-6 w-full rounded-lg shadow-md bg-charcoal-800 {% if not user.is_authenticated  %} blur-sm {% endif %}">
+            <button
+                class="text-white bg-blue-700 hover:bg-blue-800 text-sm font-semibold px-4 py-1 mb-2 rounded-full inline-flex items-center">
+                <img width="15" height="15" src="{% static 'images/unlocked-logo.png' %}" alt="None" />
                 <span class="mx-2">Users only</span>
             </button>
             <h5 class="mt-2 text-2xl font-bold text-white">Hasil Tech Survey Terakhir</h5>
             <p class="py-2 text-lg font-semibold text-blue-600" id="history">{{ riwayat.result }}</p>
             <p class="font-normal text-gray-400">Diambil pada <span id="historydate">{{ riwayat.date }}<span></p>
         </div>
+        {% if not user.is_authenticated %}
+        <div class="absolute top-0 flex flex-col justify-center items-center mt-5">
+            <p class="text-white font-bold my-4">Login untuk melihat riwayat hasil survey!</p>
+            <a href="{% url 'main:login' %}">
+                <button type="button"
+                    class="px-8 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Login
+                </button>
+            </a>
+        </div>
+        {% endif %}
     </div>
     <!-- Last Result End -->
 
