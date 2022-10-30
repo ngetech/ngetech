@@ -33,13 +33,7 @@ def add_post_tech(request):
             title=title,
             description=description
         )
-        return redirect('post-tech:show-post-tech')
-
-    return render(
-        request,
-        'create_post_tech.html',
-        {}
-    )
+        return JsonResponse({'error': False})
 
 @login_required(login_url='/login/')
 @csrf_exempt
