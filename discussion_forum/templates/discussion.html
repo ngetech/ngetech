@@ -1,70 +1,39 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block meta %}
-<script>
-  const createDiscussionPost = (data) => {
-    return `<div class="flex flex-col bg-charcoal-800 rounded-lg p-4 break-words">
-      <p class="italic font-bold text-gray-400">${data.user[0]}</p>
-      <p>${data.content}</p>
-    </div>`;
-  }
-
-  const loadDiscussion = () => {
-    $.get("/discussion/get-discussion/", (data) => {
-      for(var i = 0; i < data.length; i++){
-        const post = createDiscussionPost(data[i].fields);
-        $("#forum").append(post);
-      }
-    });
-  }
-
-  const postDiscussion = () => {
-    $.post("/discussion/post-discussion-forum/", {
-      content: $("#content-field").val(),
-      csrfmiddlewaretoken: "{{ csrf_token }}"
-    },
-    (data, status) => {
-      const post = createDiscussionPost(data[0].fields);
-      $("#forum").append(post);
-      $("#content-field").val("");
-    });
-  }
-
-  $(document).ready(() => {
-    loadDiscussion();
-
-    $('#post-discussion').click(() => {
-      postDiscussion();
-      return false;
-    });
-  });
-</script>
+<script type="text/javascript" src="{% static 'js/discussion.js' %}"></script>
 {% endblock meta %}
 
+{% load filters %}
 
 {% block content %}
-{% load filters %}
-<div class="flex flex-col gap-4 p-8 pt-24">
-  <h1 class="font-bold text-2xl text-white">Discussion Forum</h1>
-  
-  <div id="forum" class="flex flex-col gap-4 text-white">
-  </div>
+<main class="mx-auto mt-[15vh] mb-[8vh] min-h-[calc(60vh-4rem)] max-w-[160vh]">
+  <div class="flex flex-col gap-4 px-8 md:p-0">
+    
+    <div class="flex flex-col bg-charcoal-800 rounded-lg p-4 break-words gap-2" id="main-discussion" pk="{{ discussion.pk }}">
+      <h1 class="font-bold text-2xl text-white">{{ discussion.title }}</h1>
+      <p class="text-white">{{ discussion.content }}</p>
+      <p class="text-gray-500">Started by <span class="text-blue-600 font-medium">@{{ discussion.user }}</span> on {{ discussion.date }}</p>
+    </div>
 
-  <div class="flex flex-col relative">
-    <form class="flex flex-col gap-2 {% if not user.is_authenticated  %} blur-sm {% endif %}">
-      {% csrf_token %}
-  
+    <div class="flex flex-col relative">
+      <form class="flex flex-col gap-2 {% if not user.is_authenticated  %} blur-sm {% endif %}">
+        {% csrf_token %}
+    
         <p class="font-semibold text-white">Join the <span class="text-blue-600">discussion</span>, {{ user.username }}!</p>
-  
-        {{ form.content|addclass:"rounded" }}
+
+        {{ form.content|addclass:"rounded-lg bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" }}
       
         <div class="flex">
-          <button id="post-discussion" class="rounded bg-blue-600 text-white py-2 px-4">Post</button>
+          <button id="post-reply" class="rounded bg-blue-600 text-white py-2 px-4 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">Post</button>
         </div>
       </form>
+
       {% if not user.is_authenticated %}
         <div class="flex flex-col md:flex-row gap-2 top-0 pb-4 absolute h-full w-full justify-center items-center md:text-xl">
-          <p class="text-black font-semibold">Join the <span class="text-blue-600">discussion</span>!</p>
+          <p class="text-white font-semibold">Join the <span class="text-blue-600">discussion</span>!</p>
           <a href="{% url 'main:login' %}">
             <button type="button"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-3 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -73,7 +42,14 @@
         </a>
         </div>
       {% endif %}
+    </div>
+
+    <p class="text-white text-xl font-medium">Replies</p>
+
+    <div id="replies" class="flex flex-col gap-4">
+    </div>
   </div>
-</div>
+  
+</main>
 
 {% endblock content %}
