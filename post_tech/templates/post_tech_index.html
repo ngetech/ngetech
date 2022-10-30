@@ -72,10 +72,11 @@
         </div>
     </section>
     <!-- Users Post End -->
+</main>
 
-    <!-- Modal Start -->
-    <section id="post-tech-modal"
-        class="hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2/3 max-h-[100vh] z-[1000]">
+<!-- Modal Start -->
+<section id="post-tech-modal" class="hidden fixed top-0 left-0 h-screen w-screen bg-black bg-opacity-50 z-[1000] ">
+    <section class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2/3 max-h-[100vh] z-[1000]">
         <div class="p-4 lg:p-8 rounded-xl bg-charcoal-700 sm:w-full">
             <form method="POST" action="">
                 {% csrf_token %}
@@ -109,9 +110,8 @@
             </form>
         </div>
     </section>
-    <!-- Modal End -->
-
-</main>
+</section>
+<!-- Modal End -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 {% block script %}
