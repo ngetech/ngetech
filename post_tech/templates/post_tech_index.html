@@ -35,8 +35,14 @@
                 orang tertentu. Untuk itu, Ngetech menghadirkan anda sebuah fitur serta platform untuk setiap komunitas
                 untuk berkreasi dan berkolaborasi.
             </p>
+            <a href="{% url 'main:login' %}" class="{% if user.is_authenticated %} hidden {% endif %}">
+                <button type="button" id="unauthenticated-user-button"
+                    class=" text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 font-medium rounded-lg text-base px-8 py-2 my-4 mr-2 focus:ring-blue-800">
+                    Shares Your Experience With Us
+                </button>
+            </a>
             <button type="button" id="open-post-tech-modal-button"
-                class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 font-medium rounded-lg text-base px-8 py-2 my-4 mr-2 focus:ring-blue-800">
+                class="{% if not user.is_authenticated %} hidden {% endif %} text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 font-medium rounded-lg text-base px-8 py-2 my-4 mr-2 focus:ring-blue-800">
                 Shares Your Experience With Us
             </button>
         </div>
