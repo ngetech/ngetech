@@ -56,14 +56,15 @@ def get_discussion_replies(req, id):
         replies = ForumReply.objects.filter(discussion=discussion)
         for reply in replies:
             response["replies"].append({
+                "pk": reply.pk,
                 "content": reply.content,
                 "user": reply.user.username,
-                "date": reply.date.strftime("%b. %d, %Y")
+                "date": reply.date.strftime("%b. %d, %Y"),
+                "replyParentPk": reply.pk
             })
 
         return JsonResponse(response)
-    except Exception as e:
-        print(e)
+    except:
         return HttpResponseNotFound(f"Discussion not exist (id: {id})")
 
 @login_required(login_url='/login/')
@@ -79,14 +80,64 @@ def add_discussion_reply(req, id):
                 response = {
                     "user": req.user.username,
                     "reply": {
+                        "pk": reply.pk,
                         "content": reply.content,
                         "user": reply.user.username,
-                        "date": reply.date.strftime("%b. %d, %Y")
+                        "date": reply.date.strftime("%b. %d, %Y"),
+                        "replyParentPk": reply.pk
                     }
                 }
 
                 return JsonResponse(response)
         
         return HttpResponseBadRequest("Bad request")
+    except:
+        return HttpResponseNotFound(f"Discussion not exist (id: {id})")
+
+@login_required(login_url='/login/')
+def add_nested_reply(req, id):
+    try:
+        if req.method == "POST":
+            content = req.POST.get("content")
+            if content is not None and content != "":
+                reply_parent = ForumReply.objects.get(pk=id)
+                reply = ForumReply.objects.create(content=content, reply=reply_parent, user=req.user)
+
+                response = {
+                    "user": req.user.username,
+                    "reply": {
+                        "pk": reply.pk,
+                        "content": reply.content,
+                        "user": reply.user.username,
+                        "date": reply.date.strftime("%b. %d, %Y"),
+                        "replyParentPk": id
+                    }
+                }
+
+                return JsonResponse(response)
+        
+        return HttpResponseBadRequest("Bad request")
+    except:
+        return HttpResponseNotFound(f"Reply not exist (id: {id})")
+
+def get_nested_replies(req, id):
+    try:
+        response = {
+            "user": req.user.username,
+            "replies": []
+        }
+
+        reply_parent = ForumReply.objects.get(pk=id)
+        replies = ForumReply.objects.filter(reply=reply_parent)
+        for reply in replies:
+            response["replies"].append({
+                "pk": reply.pk,
+                "content": reply.content,
+                "user": reply.user.username,
+                "date": reply.date.strftime("%b. %d, %Y"),
+                "replyParentPk": id
+            })
+
+        return JsonResponse(response)
     except:
         return HttpResponseNotFound(f"Discussion not exist (id: {id})")

@@ -916,6 +916,10 @@ select {
   margin-right: 0.75rem;
 }
 
+.ml-4 {
+  margin-left: 1rem;
+}
+
 .mb-6 {
   margin-bottom: 1.5rem;
 }
@@ -958,6 +962,14 @@ select {
 
 .mt-\[10vh\] {
   margin-top: 10vh;
+}
+
+.ml-8 {
+  margin-left: 2rem;
+}
+
+.ml-16 {
+  margin-left: 4rem;
 }
 
 .block {
@@ -1313,6 +1325,10 @@ select {
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
 
+.bg-transparent {
+  background-color: transparent;
+}
+
 .bg-charcoal-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(15 17 18 / var(--tw-bg-opacity));
@@ -1401,11 +1417,6 @@ select {
   padding-right: 0.75rem;
 }
 
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -1419,6 +1430,11 @@ select {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .px-5 {
@@ -1699,11 +1715,6 @@ select {
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-charcoal-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(24 26 30 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-blue-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
@@ -1717,6 +1728,11 @@ select {
 .hover\:bg-red-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-charcoal-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(24 26 30 / var(--tw-bg-opacity));
 }
 
 .hover\:underline:hover {

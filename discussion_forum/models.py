@@ -13,4 +13,5 @@ class ForumReply(models.Model):
     content = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(auto_now=True)
-    discussion = models.ForeignKey(ForumDiscussion, on_delete=models.CASCADE)
+    discussion = models.ForeignKey(ForumDiscussion, on_delete=models.CASCADE, null=True)
+    reply = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
