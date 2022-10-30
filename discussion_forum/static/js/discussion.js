@@ -37,7 +37,7 @@ const createReply = (data, loggedUser) => {
     return `
     <div class="flex flex-col gap-4">
         ${createReplyCard(data, loggedUser)}
-        <div class="flex flex-col ml-16 gap-4" id="nested-replies-${data.pk}">
+        <div class="flex flex-col ml-10 md:ml-16 gap-4" id="nested-replies-${data.pk}">
         </div>
     </div>`;
 }
