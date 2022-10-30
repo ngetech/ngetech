@@ -1,7 +1,7 @@
 const createNestedReplyInput = (replyPk, replyUser) => {
     return `
     <div class="flex flex-col bg-charcoal-800 rounded-lg py-4 px-6 gap-2" id="nested-reply-input-parent">
-        <p class="font-medium text-white">Replying to <span class="font-bold text-blue-600">${replyUser}</span></p>
+        <p class="font-medium text-white">Replying to <span class="font-medium text-blue-600">${replyUser}</span></p>
         <textarea id="nested-reply-input" class="rounded-lg bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your message here"></textarea>
         <div class="flex">
             <button type="button"
@@ -22,7 +22,7 @@ const showReplyInput = (replyPk, replyUser) => {
 const createReplyCard = (data, loggedUser) => {
     return `
     <div class="flex flex-col bg-charcoal-800 rounded-lg py-4 px-6 break-words" id="reply-${data.pk}">
-        <p class="font-bold text-blue-600">${(data.user == loggedUser ? 'You' : '@' + data.user) + 
+        <p class="font-medium text-blue-600">${(data.user == loggedUser ? 'You' : '@' + data.user) + 
             (data.replyingTo == '' ? '' : ' <span class="text-white font-normal">replying to</span> ' +
             (data.replyingTo == loggedUser ? 'You' : '@' + data.replyingTo))}</p>
         <p class="text-white">${data.content}</p>
