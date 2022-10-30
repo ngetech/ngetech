@@ -15,3 +15,4 @@ class ForumReply(models.Model):
     date = models.DateField(auto_now=True)
     discussion = models.ForeignKey(ForumDiscussion, on_delete=models.CASCADE, null=True)
     reply = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
+    replying_to = models.TextField(default="")

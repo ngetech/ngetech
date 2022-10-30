@@ -9,21 +9,23 @@
 {% load filters %}
 
 {% block content %}
-<div class="flex flex-col gap-4 p-8 pt-24">
-  <h1 class="font-bold text-2xl text-white">Start A Discussion</h1>
-  <div class="flex flex-col relative">
-    <form class="flex flex-col gap-2 {% if not user.is_authenticated  %} blur-sm {% endif %}">
-      {% csrf_token %}
-  
-      <p class="font-semibold text-white">What's in your thought, <span class="text-blue-600 font-medium">{{ user.username }}</span>?</p>
-      
-      {{ form.title|addclass:"rounded-lg bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" }}
-      {{ form.content|addclass:"rounded-lg bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" }}
+<main class="mx-auto mt-[15vh] mb-[8vh] min-h-[calc(60vh-4rem)] max-w-[160vh]">
+  <div class="flex flex-col gap-4 px-8 md:p-0">
+    <h1 class="font-bold text-2xl text-white">Start A Discussion</h1>
+    <div class="flex flex-col relative">
+      <form class="flex flex-col gap-2 {% if not user.is_authenticated  %} blur-sm {% endif %}">
+        {% csrf_token %}
     
-      <div class="flex">
-        <button id="create-discussion" class="rounded bg-blue-600 text-white py-2 px-4 text-right">Create Thread</button>
-      </div>
-    </form>
+        <p class="font-semibold text-white">What's in your thought, <span class="text-blue-600 font-medium">{{ user.username }}</span>?</p>
+        
+        {{ form.title|addclass:"rounded-lg bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" }}
+        {{ form.content|addclass:"rounded-lg bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" }}
+      
+        <div class="flex">
+          <button id="create-discussion" class="rounded bg-blue-600 text-white py-2 px-4 text-right">Create Thread</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
+</main>
 {% endblock content %}

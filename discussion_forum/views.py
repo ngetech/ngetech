@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotFou
 from django.shortcuts import render
 from discussion_forum.models import ForumDiscussion, ForumReply
 from discussion_forum.forms import DiscussionForm, ReplyForm
-from datetime import datetime
+from django.contrib.auth.models import User
 
 # Create your views here.
 def discussion(req):
@@ -60,7 +60,8 @@ def get_discussion_replies(req, id):
                 "content": reply.content,
                 "user": reply.user.username,
                 "date": reply.date.strftime("%b. %d, %Y"),
-                "replyParentPk": reply.pk
+                "replyParentPk": reply.pk,
+                "replyingTo": reply.replying_to
             })
 
         return JsonResponse(response)
@@ -84,7 +85,8 @@ def add_discussion_reply(req, id):
                         "content": reply.content,
                         "user": reply.user.username,
                         "date": reply.date.strftime("%b. %d, %Y"),
-                        "replyParentPk": reply.pk
+                        "replyParentPk": reply.pk,
+                        "replyingTo": reply.replying_to
                     }
                 }
 
@@ -99,9 +101,10 @@ def add_nested_reply(req, id):
     try:
         if req.method == "POST":
             content = req.POST.get("content")
+            user = req.POST.get("user")
             if content is not None and content != "":
                 reply_parent = ForumReply.objects.get(pk=id)
-                reply = ForumReply.objects.create(content=content, reply=reply_parent, user=req.user)
+                reply = ForumReply.objects.create(content=content, reply=reply_parent, user=req.user, replying_to=user)
 
                 response = {
                     "user": req.user.username,
@@ -110,7 +113,8 @@ def add_nested_reply(req, id):
                         "content": reply.content,
                         "user": reply.user.username,
                         "date": reply.date.strftime("%b. %d, %Y"),
-                        "replyParentPk": id
+                        "replyParentPk": id,
+                        "replyingTo": user
                     }
                 }
 
@@ -135,7 +139,8 @@ def get_nested_replies(req, id):
                 "content": reply.content,
                 "user": reply.user.username,
                 "date": reply.date.strftime("%b. %d, %Y"),
-                "replyParentPk": id
+                "replyParentPk": id,
+                "replyingTo": reply.replying_to
             })
 
         return JsonResponse(response)
