@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'about_us',
     'post_tech',
     'discussion_forum',
-    'post_detail'
+    'post_detail',
+    'top_5_post'
 ]
 
 MIDDLEWARE = [

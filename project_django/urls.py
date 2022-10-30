@@ -24,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('discussion/', include('discussion_forum.urls')),
     path('post-detail/', include('post_detail.urls')),
+    path('top-5-post/', include('top_5_post.urls')),
 ]

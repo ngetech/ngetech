@@ -2,14 +2,16 @@
 <footer class="p-4 bg-charcoal-900 shadow md:px-6 md:py-">
     <div class="sm:flex sm:items-center sm:justify-between">
         <a href="{% url 'main:home' %}" class="flex items-center mb-4 sm:mb-0">
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">NGETECH</span>
+            <!-- <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">NGETECH</span> -->
+            {% load static %}
+            <img src="{% static 'img/ngetech_logo.png' %}" class="mr-3 h-10 sm:h-9" alt="Ngetech logo">
         </a>
         <ul class="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
             <li>
-                <a href="{% url 'about-us:about-us' %}" class="mr-4 hover:underline md:mr-6 ">About</a>
+                <a href="{% url 'about-us:about-us' %}" class="mr-4 hover:underline md:mr-6 ">About Us</a>
             </li>
             <li>
-                <a href="#" class="hover:underline">Contact</a>
+                <a href="https://github.com/ngetech/ngetech" class="hover:underline">Github</a>
             </li>
         </ul>
     </div>
