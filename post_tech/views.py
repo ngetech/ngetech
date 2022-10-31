@@ -4,13 +4,17 @@ from django.core import serializers
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, JsonResponse
+from post_tech.forms import PostTechForm
 
 from post_tech.models import PostTech
 
 def show_post_tech(request):
     return render(
         request,
-        'post_tech_index.html'
+        'post_tech_index.html',
+        {
+            'form': PostTechForm()
+        }
     )
 
 @csrf_exempt
