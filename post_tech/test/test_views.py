@@ -11,10 +11,6 @@ class TestViews(TestCase):
             username="user.testing", 
             password="user.testing"
         )
-        self.otherUser = User.objects.create_user(
-            username="otherUser.testing", 
-            password="otherUser.testing"
-        )
         self.url_to_main_view = reverse(
             'post-tech:show-post-tech'
         )
@@ -138,6 +134,17 @@ class TestViews(TestCase):
         self.client.login(
             username='user.testing',
             password='user.testing'
+        )
+        response = self.client.post(
+            reverse(
+                'post-tech:like-post',
+                kwargs={'key': 1}
+            ),
+            {}
+        )
+        self.assertEqual(
+            response.status_code,
+            200
         )
         response = self.client.post(
             reverse(
