@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotFound,JsonResponse
 from post_tech.forms import PostTechForm
 
 from post_tech.models import PostTech
@@ -31,31 +31,37 @@ def add_post_tech(request):
         user = request.user
         title = request.POST.get('title')
         description = request.POST.get('description')
-        PostTech.objects.create(
-            user=user,
-            username=user,
-            title=title,
-            description=description
-        )
-        return JsonResponse({'error': False})
+        if  title is not None and description is not None:
+            post = PostTech.objects.create(
+                user=user,
+                username=user,
+                title=title,
+                description=description
+            )
+            return HttpResponse(f"Succesfully create discussion (id: {post.pk})")
+    return HttpResponseBadRequest("Bad request")
 
 @login_required(login_url='/login/')
 @csrf_exempt
 def add_likes(request, key):
-    if request.method == 'POST':
-        post = PostTech.objects.get(pk=key)
-        is_like = False
+    try:
+        if request.method == 'POST':
+            post = PostTech.objects.get(pk=key)
+            is_like = False
 
-        for like in post.likes.all():
-            if like == request.user:
-                is_like = True
-                break
-        
-        if not is_like:
-            post.likes.add(request.user)
-        
-        if is_like:
-            post.likes.remove(request.user)
+            for like in post.likes.all():
+                if like == request.user:
+                    is_like = True
+                    break
+            
+            if not is_like:
+                post.likes.add(request.user)
+            
+            if is_like:
+                post.likes.remove(request.user)
 
-        return JsonResponse({'error': False})
+            return JsonResponse({'error': False})
+        return HttpResponseBadRequest("Bad request")
+    except:
+        return HttpResponseNotFound(f"User not exist in likes with post id: {id}")
 
