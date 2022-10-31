@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotFound, JsonResponse
 from django.shortcuts import render
 from discussion_forum.models import ForumDiscussion, ForumReply
-from discussion_forum.forms import DiscussionForm, ReplyForm\
+from discussion_forum.forms import DiscussionForm, ReplyForm
 
 # Create your views here.
 def discussion(req):
