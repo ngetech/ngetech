@@ -865,26 +865,6 @@ select {
   z-index: 1000;
 }
 
-.z-\[10000\] {
-  z-index: 10000;
-}
-
-.z-\[100\] {
-  z-index: 100;
-}
-
-.z-\[999\] {
-  z-index: 999;
-}
-
-.z-\[1000000000000\] {
-  z-index: 1000000000000;
-}
-
-.-z-\[1000\] {
-  z-index: -1000;
-}
-
 .col-span-3 {
   grid-column: span 3 / span 3;
 }
@@ -1042,12 +1022,12 @@ select {
   margin-bottom: 0.25rem;
 }
 
-.mt-5 {
-  margin-top: 1.25rem;
-}
-
 .ml-10 {
   margin-left: 2.5rem;
+}
+
+.mt-5 {
+  margin-top: 1.25rem;
 }
 
 .block {
@@ -1140,12 +1120,6 @@ select {
   height: 50vh;
 }
 
-.h-max {
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
-}
-
 .max-h-0 {
   max-height: 0px;
 }
@@ -1200,12 +1174,6 @@ select {
 
 .w-2\/3 {
   width: 66.666667%;
-}
-
-.w-fit {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .min-w-0 {
@@ -1502,18 +1470,13 @@ select {
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
 
-.bg-transparent {
-  background-color: transparent;
-}
-
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+.bg-transparent {
+  background-color: transparent;
 }
 
 .bg-opacity-50 {
@@ -1613,14 +1576,14 @@ select {
   padding-right: 1.25rem;
 }
 
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .pb-4 {
