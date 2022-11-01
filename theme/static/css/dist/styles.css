@@ -849,48 +849,12 @@ select {
   top: 100%;
 }
 
-.right-0 {
-  right: 0px;
-}
-
 .bottom-0 {
   bottom: 0px;
 }
 
 .top-1\/2 {
   top: 50%;
-}
-
-.right-full {
-  right: 100%;
-}
-
-.right-4 {
-  right: 1rem;
-}
-
-.right-1\/4 {
-  right: 25%;
-}
-
-.right-8 {
-  right: 2rem;
-}
-
-.right-80 {
-  right: 20rem;
-}
-
-.right-20 {
-  right: 5rem;
-}
-
-.right-40 {
-  right: 10rem;
-}
-
-.right-24 {
-  right: 6rem;
 }
 
 .z-20 {
@@ -917,16 +881,8 @@ select {
   margin: 1.5rem;
 }
 
-.m-2 {
-  margin: 0.5rem;
-}
-
 .m-4 {
   margin: 1rem;
-}
-
-.m-16 {
-  margin: 4rem;
 }
 
 .mx-auto {
@@ -969,14 +925,14 @@ select {
   margin-bottom: 2rem;
 }
 
-.mx-2 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
 .mx-6 {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .mb-4 {
@@ -1051,10 +1007,6 @@ select {
   margin-top: 1.5rem;
 }
 
-.-ml-4 {
-  margin-left: -1rem;
-}
-
 .mr-auto {
   margin-right: auto;
 }
@@ -1081,10 +1033,6 @@ select {
 
 .mt-5 {
   margin-top: 1.25rem;
-}
-
-.ml-4 {
-  margin-left: 1rem;
 }
 
 .block {
@@ -1393,37 +1341,21 @@ select {
   border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
 }
 
-.divide-y > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-y-reverse: 0;
-  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
-  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
-}
-
-.divide-y-\[-\.1px\] > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-y-reverse: 0;
-  border-top-width: calc(-.1px * calc(1 - var(--tw-divide-y-reverse)));
-  border-bottom-width: calc(-.1px * var(--tw-divide-y-reverse));
-}
-
 .divide-y-\[0\.1px\] > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(0.1px * calc(1 - var(--tw-divide-y-reverse)));
   border-bottom-width: calc(0.1px * var(--tw-divide-y-reverse));
 }
 
+.divide-y > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+}
+
 .divide-charcoal-600 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(85 86 92 / var(--tw-divide-opacity));
-}
-
-.divide-gray-100 > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-opacity: 1;
-  border-color: rgb(243 244 246 / var(--tw-divide-opacity));
-}
-
-.divide-charcoal-700 > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-opacity: 1;
-  border-color: rgb(24 26 30 / var(--tw-divide-opacity));
 }
 
 .self-center {
@@ -1992,11 +1924,6 @@ select {
 .hover\:bg-gray-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-red-500:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-charcoal-700:hover {
