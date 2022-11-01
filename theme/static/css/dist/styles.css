@@ -869,6 +869,10 @@ select {
   z-index: 1000;
 }
 
+.z-\[1000px\] {
+  z-index: 1000px;
+}
+
 .col-span-3 {
   grid-column: span 3 / span 3;
 }
@@ -2142,6 +2146,16 @@ select {
     margin-right: 3rem;
   }
 
+  .md\:mx-8 {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .md\:mx-4 {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
   .md\:mt-\[1\.5vh\] {
     margin-top: 1.5vh;
   }
@@ -2223,6 +2237,10 @@ select {
 
   .md\:p-8 {
     padding: 2rem;
+  }
+
+  .md\:p-4 {
+    padding: 1rem;
   }
 
   .md\:px-16 {
