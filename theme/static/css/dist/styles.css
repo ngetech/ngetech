@@ -861,16 +861,8 @@ select {
   z-index: 20;
 }
 
-.z-50 {
-  z-index: 50;
-}
-
 .z-\[1000\] {
   z-index: 1000;
-}
-
-.z-\[1000px\] {
-  z-index: 1000px;
 }
 
 .col-span-3 {
@@ -2136,6 +2128,11 @@ select {
     order: 1;
   }
 
+  .md\:mx-4 {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
   .md\:mx-16 {
     margin-left: 4rem;
     margin-right: 4rem;
@@ -2144,16 +2141,6 @@ select {
   .md\:mx-12 {
     margin-left: 3rem;
     margin-right: 3rem;
-  }
-
-  .md\:mx-8 {
-    margin-left: 2rem;
-    margin-right: 2rem;
-  }
-
-  .md\:mx-4 {
-    margin-left: 1rem;
-    margin-right: 1rem;
   }
 
   .md\:mt-\[1\.5vh\] {
@@ -2223,24 +2210,16 @@ select {
     border-width: 0px;
   }
 
-  .md\:p-20 {
-    padding: 5rem;
+  .md\:p-16 {
+    padding: 4rem;
   }
 
   .md\:p-0 {
     padding: 0px;
   }
 
-  .md\:p-16 {
-    padding: 4rem;
-  }
-
   .md\:p-8 {
     padding: 2rem;
-  }
-
-  .md\:p-4 {
-    padding: 1rem;
   }
 
   .md\:px-16 {
