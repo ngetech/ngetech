@@ -18,8 +18,10 @@ NgeTech adalah segala hal yang berkaitan dengan teknologi masa kini. NgeTech men
 
 Cakupan lingkup NgeTech adalah untuk membuka mata komunitas bahwa teknologi kian tangkas bermigrasi dari budaya terdahulu hingga ke masa kini yang penuh dengan abstraksi. NgeTech menyadari bahwa pusat perputaran teknologi menciptakan generasi baru yang konsumtif terhadap digitalisasi dunia. Dengan demikian, NgeTech hadir dalam dunia yang terdistraksi dengan teknologi untuk mengantar serta membawa revolusi terhadap digitalisasi teknologi sebagai misi dari G20.
 
-> “It's not a faith in technology. It's faith in people.” <br />
-> — Steve Jobs, Co-founder of Apple.
+> NgeTech dibuat untuk memenuhi tugas Proyek Tengah Semester (PTS)
+> pada mata kuliah Pemrograman Berbasis Platform (CSGE602022) yang
+> diselenggarakan oleh Fakultas Ilmu Komputer, Universitas Indonesia
+> pada Semester Gasal, Tahun Ajaran 2022/2023.
 
 ## 📝 Daftar modul yang akan diimplementasikan 📝
 - User Authentication & Authorization - [Glan](https://github.com/glanharith)
