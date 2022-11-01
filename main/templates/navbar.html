@@ -51,7 +51,7 @@
                         </a>
                         {% endif %}
                         <a href="{% url 'main:logout' %}">
-                            <div class="px-4 mt-2 rounded divide-y bg-red-600">
+                            <div class="px-4 {% if user.is_superuser %} mt-2 {% endif %} rounded divide-y bg-red-600">
                                 <h2 class="block py-2 px-4 text-sm text-white font-semibold text-center">
                                     Logout
                                 </h2>
