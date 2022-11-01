@@ -2,57 +2,57 @@
 {% load tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% tailwind_css %}
-  {% block meta %}
-  {% endblock meta %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% tailwind_css %}
+    {% block meta %}
+    {% endblock meta %}
+    <link rel="shortcut icon" href="{% static 'img/ngetech_web_icon.png' %}" type="x-icon">
 </head>
+
 <body class="bg-charcoal-900">
-  <div class="flex justify-center items-center w-screen h-screen bg-charcoal-900">
-    <div
-        class="p-4 w-full max-w-sm bg-charcoal-800 rounded-lg shadow-md sm:p-6 md:p-8">
-        <form method="POST" action="" class="rounded px-4 pt-6 pb-8">
-            <h1 class="text-center my-4 bg text-xl font-bold text-blue-600 dark:text-gray-300">Register Account</h1>
-            {% csrf_token %}
-            <div class="mr-auto">
-                <label for="username"
-                    class="block mb-2 text-sm font-medium text-gray-400 dark:text-gray-300">Username</label>
-            </div>
-            <input type="text" name="username" placeholder="Username" required
-                class="form-control block p-2.5 w-full text-sm rounded-lg border  bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-            <div class="mt-4">
-                <label for="password1"
-                    class="block mb-2 text-sm font-medium text-gray-400 dark:text-gray-300">Password</label>
-            </div>
-            <input type="password" name="password1" placeholder="Enter password" required
-                class="form-control block p-2.5 w-full text-sm rounded-lg border  bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-            <div class="mt-4">
-                <label for="password2" class="block mb-2 text-sm font-medium text-gray-400 dark:text-gray-300">Confirm
-                    Password</label>
-            </div>
-            <input type="password" name="password2" placeholder="Confirm password" required
-                class="form-control block p-2.5 w-full text-sm rounded-lg border  bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-            {% for message in messages %}
-            <h1 class="text-sm text-red-500 mt-2">{{ message }}</h1>
-            {% endfor %}
-            <div class="mt-6">
-                <button
-                    class="btn login_btn w-full bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="submit" value="Login">
-                    Register
-                </button>
-            </div>
-            <a href="{% url 'main:login' %}">
-                <button type="button" onclick=""
-                    class="mt-4 w-full bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    Back
-                </button>
-            </a>
-        </form>
+    <div class="flex justify-center items-center w-screen h-screen bg-charcoal-900">
+        <div class="p-4 mx-6 w-full max-w-sm bg-charcoal-800 rounded-lg shadow-md sm:p-6 md:p-8">
+            <form method="POST" action="" class="rounded px-4 pt-6 pb-8">
+                <h1 class="text-center my-4 bg text-xl font-bold text-blue-600 dark:text-gray-300">Register Account</h1>
+                {% csrf_token %}
+                <div class="mr-auto">
+                    <label for="username"
+                        class="block mb-2 text-sm font-medium text-gray-400 dark:text-gray-300">Username</label>
+                </div>
+                <input type="text" name="username" placeholder="Username" required
+                    class="form-control block p-2.5 w-full text-sm rounded-lg border  bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+                <div class="mt-4">
+                    <label for="password1"
+                        class="block mb-2 text-sm font-medium text-gray-400 dark:text-gray-300">Password</label>
+                </div>
+                <input type="password" name="password1" placeholder="Enter password" required
+                    class="form-control block p-2.5 w-full text-sm rounded-lg border  bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+                <div class="mt-4">
+                    <label for="password2"
+                        class="block mb-2 text-sm font-medium text-gray-400 dark:text-gray-300">Confirm
+                        Password</label>
+                </div>
+                <input type="password" name="password2" placeholder="Confirm password" required
+                    class="form-control block p-2.5 w-full text-sm rounded-lg border  bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+                {% for message in messages %}
+                <h1 class="text-sm text-red-500 mt-2">{{ message }}</h1>
+                {% endfor %}
+                <div class="mt-6">
+                    <button
+                        class="btn login_btn w-full bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="submit" value="Login">
+                        Register
+                    </button>
+                </div>
+                <h1 class="mt-2 text-gray-400 text-base text-center dark:text-gray-300">Already have an account? <a
+                        class="text-blue-600" href="{% url 'main:login' %}">Login now</a>
+                </h1>
+            </form>
+        </div>
     </div>
-</div>
 
 </body>
 

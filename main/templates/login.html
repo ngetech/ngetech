@@ -9,13 +9,14 @@
   {% tailwind_css %}
   {% block meta %}
   {% endblock meta %}
+  <link rel="shortcut icon" href="{% static 'img/ngetech_web_icon.png' %}" type="x-icon">
 </head>
 <body class="bg-charcoal-900">
 
 <div class="flex justify-center items-center w-screen h-screen bg-charcoal-900">
     <div
-        class="p-4 w-full max-w-md bg-charcoal-800 rounded-lg shadow-md sm:p-6 md:p-8">
-        <form method="POST" action="" class="rounded px-2 pt-6 pb-8">
+        class="p-4 mx-6 w-full max-w-md bg-charcoal-800 rounded-lg shadow-md sm:p-6 md:p-8">
+        <form method="POST" action="" class="rounded px-2 pt-6 pb-8 m-4">
             <h1 class="text-center text-2xl font-bold text-blue-600 dark:text-gray-300">Login</h1>
             {% csrf_token %}
             <div class="mt-4">
