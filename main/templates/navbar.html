@@ -14,44 +14,45 @@
                 </button>
             </a>
             {% else %}
+            <!-- User Avatar Section Start -->
             <ul class="list-none py-2 px-4 rounded-lg flex justify-center items-center bg-charcoal-800">
-                <li>
-                    <div id="avatarButton" class="flex flex-wrap items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32">
-                            <path fill="none"
-                                d="M8.007 24.93A4.996 4.996 0 0 1 13 20h6a4.996 4.996 0 0 1 4.993 4.93a11.94 11.94 0 0 1-15.986 0ZM20.5 12.5A4.5 4.5 0 1 1 16 8a4.5 4.5 0 0 1 4.5 4.5Z" />
-                            <path fill="#2563eb"
-                                d="M26.749 24.93A13.99 13.99 0 1 0 2 16a13.899 13.899 0 0 0 3.251 8.93l-.02.017c.07.084.15.156.222.239c.09.103.187.2.28.3c.28.304.568.596.87.87c.092.084.187.162.28.242c.32.276.649.538.99.782c.044.03.084.069.128.1v-.012a13.901 13.901 0 0 0 16 0v.012c.044-.031.083-.07.128-.1c.34-.245.67-.506.99-.782c.093-.08.188-.159.28-.242c.302-.275.59-.566.87-.87c.093-.1.189-.197.28-.3c.071-.083.152-.155.222-.24ZM16 8a4.5 4.5 0 1 1-4.5 4.5A4.5 4.5 0 0 1 16 8ZM8.007 24.93A4.996 4.996 0 0 1 13 20h6a4.996 4.996 0 0 1 4.993 4.93a11.94 11.94 0 0 1-15.986 0Z" />
-                        </svg>
-                        <h2 class="font-semibold text-lg text-white">{{ user }}</h2>
-                    </div>
-                    <div id="userDropdown"
-                        class="hidden absolute top-full right-0 -ml-4 z-50 my-4 text-base list-none bg-charcoal-700 rounded divide-y divide-gray-100 shadow">
-                        <div class="px-4 py-2">
-                            <span class="block text-sm text-gray-400 font-bold text-center">Status</span>
-                            {% if user.is_superuser %}
-                            <span class="block text-sm text-blue-500 font-bold text-center italic">Admin Ngetech</span>
-                            {% else %}
-                            <span class="block text-sm text-blue-500 font-bold text-center italic">User Ngetech</span>
-                            {% endif %}
-                        </div>
-                        <ul class="p-2" aria-labelledby="user-menu-button">
-                            <li>
-                                <!-- <a href="" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Sign out</a> -->
-                                <a href="{% url 'main:logout' %}">
-                                    <div class="px-4 rounded divide-y bg-red-600">
-                                        <h2 class="block py-2 px-4 text-sm text-white font-semibold">
-                                            Logout
-                                        </h2>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                <!-- User Avatar Start -->
+                <div id="avatarButton" class="flex flex-wrap items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" preserveAspectRatio="xMidYMid meet"
+                        viewBox="0 0 32 32">
+                        <path fill="none"
+                            d="M8.007 24.93A4.996 4.996 0 0 1 13 20h6a4.996 4.996 0 0 1 4.993 4.93a11.94 11.94 0 0 1-15.986 0ZM20.5 12.5A4.5 4.5 0 1 1 16 8a4.5 4.5 0 0 1 4.5 4.5Z" />
+                        <path fill="#2563eb"
+                            d="M26.749 24.93A13.99 13.99 0 1 0 2 16a13.899 13.899 0 0 0 3.251 8.93l-.02.017c.07.084.15.156.222.239c.09.103.187.2.28.3c.28.304.568.596.87.87c.092.084.187.162.28.242c.32.276.649.538.99.782c.044.03.084.069.128.1v-.012a13.901 13.901 0 0 0 16 0v.012c.044-.031.083-.07.128-.1c.34-.245.67-.506.99-.782c.093-.08.188-.159.28-.242c.302-.275.59-.566.87-.87c.093-.1.189-.197.28-.3c.071-.083.152-.155.222-.24ZM16 8a4.5 4.5 0 1 1-4.5 4.5A4.5 4.5 0 0 1 16 8ZM8.007 24.93A4.996 4.996 0 0 1 13 20h6a4.996 4.996 0 0 1 4.993 4.93a11.94 11.94 0 0 1-15.986 0Z" />
+                    </svg>
+                    <h2 class="font-semibold text-lg text-white">{{ user }}</h2>
+                </div>
+                <!-- User Avatar End -->
 
-                </li>
+                <!-- Dropdown Start -->
+                <div id="userDropdown"
+                    class="hidden absolute top-full z-50 my-4 text-base bg-charcoal-700 rounded divide-y-[0.1px] divide-charcoal-600 shadow">
+                    <div class="px-4 py-2">
+                        <span class="block text-sm text-gray-400 font-bold text-center">Status</span>
+                        {% if user.is_superuser %}
+                        <span class="block text-sm text-blue-500 font-bold text-center italic">Admin Ngetech</span>
+                        {% else %}
+                        <span class="block text-sm text-blue-500 font-bold text-center italic">User Ngetech</span>
+                        {% endif %}
+                    </div>
+                    <div class="p-2" aria-labelledby="user-menu-button">
+                        <a href="{% url 'main:logout' %}">
+                            <div class="px-4 rounded divide-y bg-red-600">
+                                <h2 class="block py-2 px-4 text-sm text-white font-semibold">
+                                    Logout
+                                </h2>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- Dropdown End -->
             </ul>
+            <!-- User Avatar Section End -->
             {% endif %}
             <button id="hamburger" data-collapse-toggle="navbar-sticky" type="button"
                 class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
