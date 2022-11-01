@@ -41,9 +41,18 @@
                         {% endif %}
                     </div>
                     <div class="p-2" aria-labelledby="user-menu-button">
+                        {% if user.is_superuser %}
+                        <a href="{% url 'admin:index' %}">
+                            <div class="px-4 rounded divide-y bg-blue-600">
+                                <h2 class="block py-2 px-4 text-sm text-white font-semibold text-center">
+                                    Admin Panel
+                                </h2>
+                            </div>
+                        </a>
+                        {% endif %}
                         <a href="{% url 'main:logout' %}">
-                            <div class="px-4 rounded divide-y bg-red-600">
-                                <h2 class="block py-2 px-4 text-sm text-white font-semibold">
+                            <div class="px-4 mt-2 rounded divide-y bg-red-600">
+                                <h2 class="block py-2 px-4 text-sm text-white font-semibold text-center">
                                     Logout
                                 </h2>
                             </div>
