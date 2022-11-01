@@ -1181,6 +1181,12 @@ select {
   width: 66.666667%;
 }
 
+.w-min {
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
