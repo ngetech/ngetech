@@ -2,7 +2,6 @@
     class="px-2 sm:px-4 py-2.5 bg-charcoal-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <a href="/" class="flex items-center">
-            <!-- <h2 class="text-xl font-bold text-white">NGE<span class="text-blue-600">TECH</span></h2> -->
             {% load static %}
             <img src="{% static 'img/ngetech_logo.png' %}" class="mr-3 h-6 sm:h-9" alt="Ngetech logo">
         </a>
@@ -27,19 +26,33 @@
                         </svg>
                         <h2 class="font-semibold text-lg text-white">{{ user }}</h2>
                     </div>
-
-                    <!-- Dropdown menu -->
-                    <a href="{% url 'main:logout' %}">
-                        <div id="userDropdown" class="hidden absolute top-[8vh] px-4 rounded divide-y bg-red-600">
-                            <h2 class="block py-2 px-4 text-sm text-white font-semibold">
-                                Logout
-                            </h2>
+                    <div id="userDropdown"
+                        class="hidden absolute top-full right-0 -ml-4 z-50 my-4 text-base list-none bg-charcoal-700 rounded divide-y divide-gray-100 shadow">
+                        <div class="px-4 py-2">
+                            <span class="block text-sm text-gray-400 font-bold text-center">Status</span>
+                            {% if user.is_superuser %}
+                            <span class="block text-sm text-blue-500 font-bold text-center italic">Admin Ngetech</span>
+                            {% else %}
+                            <span class="block text-sm text-blue-500 font-bold text-center italic">User Ngetech</span>
+                            {% endif %}
                         </div>
-                    </a>
+                        <ul class="p-2" aria-labelledby="user-menu-button">
+                            <li>
+                                <!-- <a href="" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Sign out</a> -->
+                                <a href="{% url 'main:logout' %}">
+                                    <div class="px-4 rounded divide-y bg-red-600">
+                                        <h2 class="block py-2 px-4 text-sm text-white font-semibold">
+                                            Logout
+                                        </h2>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
                 </li>
             </ul>
             {% endif %}
-
             <button id="hamburger" data-collapse-toggle="navbar-sticky" type="button"
                 class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 aria-controls="navbar-sticky" aria-expanded="false">
@@ -65,7 +78,8 @@
                 </li>
                 <li>
                     <a href="{% url 'top_5_post:show_top5_post' %}"
-                    class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Top #5</a>
+                        class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Top
+                        #5</a>
                 </li>
                 <li>
                     <a href="{% url 'post-tech:show-post-tech' %}"
