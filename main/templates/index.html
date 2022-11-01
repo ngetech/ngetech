@@ -19,18 +19,27 @@
         <div class="flex flex-col items-center justify-center h-screen">
             <h2 class="mb-3 px-8 text-2xl font-bold text-center text-blue-600">KNOWLEDGE IS THE <span
                     class="italic">KEY</span></h2>
-            <h2 class="mb-3 px-8 text-5xl font-bold text-center text-white">Grow In Rapidly Cultural Transformation.
+            <h2 class="mb-3 px-8 text-5xl font-bold text-center text-white">Grow In Rapidly Cultural Transformation
             </h2>
             <h2 class="mb-3 px-8 text-xl font-bold text-center text-gray-400">Provides you a place to shares an adequate
                 information
                 about latest tech in the industry.
             </h2>
-            <a href="#features">
+            {% if not user.is_authenticated %}
+            <a id="scroll-to-section-features" href="{% url 'main:login' %}">
                 <button type="button"
                     class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 font-medium rounded-lg text-base px-8 py-2 my-4 mr-2 focus:ring-blue-800">
                     Get Started
                 </button>
             </a>
+            {% else %}
+            <a id="scroll-to-section-features" href="{% url 'post-tech:show-post-tech' %}">
+                <button type="button"
+                    class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 font-medium rounded-lg text-base px-8 py-2 my-4 mr-2 focus:ring-blue-800">
+                    Start Exploring
+                </button>
+            </a>
+            {% endif %}
         </div>
     </section>
     <!-- Hero Section End -->
@@ -120,10 +129,11 @@
     <!-- About Section End -->
 
     <!-- Features Section Start -->
-    <section id="features" class="py-8">
+    <section class="py-8">
         <div class="py-2 md:py-8 pb-10 flex flex-col items-center justify-center">
             <h1 class="text-3xl font-bold text-blue-600">Features</h1>
-            <h1 class="mt-2 text-sm font-semibold text-center text-gray-400">Fitur-fitur yang kami tawarkan melalui
+            <h1  class="mt-2 text-sm font-semibold text-center text-gray-400">Fitur-fitur yang kami
+                tawarkan melalui
                 website ini</h1>
             <div class="my-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 group">
 
@@ -164,7 +174,8 @@
                         </p>
                     </div>
                     <div class="flex flex-wrap mt-auto gap-8">
-                        <a href="{% url 'top_5_post:show_top5_post' %}" class="inline-flex items-center text-blue-600 hover:underline">
+                        <a href="{% url 'top_5_post:show_top5_post' %}"
+                            class="inline-flex items-center text-blue-600 hover:underline">
                             Jelajahi lebih jauh
                         </a>
                     </div>
@@ -204,7 +215,8 @@
                         <h5 class="mb-2 text-2xl font-semibold tracking-tight text-white">Bebas
                             Bereaksi</h5>
                         <p class="mb-3 font-normal text-gray-400">
-                            Anda dibebaskan untuk memberikan pendapat terhadap suatu postingan orang lain dengan memberikan
+                            Anda dibebaskan untuk memberikan pendapat terhadap suatu postingan orang lain dengan
+                            memberikan
                             komentar ke dalam <span class="italic">Post Tech</span> orang lain
                         </p>
                     </div>
@@ -228,12 +240,13 @@
                             Seberapa
                             NgeTech</h5>
                         <p class="mb-3 font-normal text-gray-400">
-                            Cari tahu seberapa melek anda terhadap perkembangan teknologi-teknologi yang sedang hangat 
+                            Cari tahu seberapa melek anda terhadap perkembangan teknologi-teknologi yang sedang hangat
                             di masa kini
                         </p>
                     </div>
                     <div class="flex flex-wrap mt-auto gap-8">
-                        <a href="{% url 'tech_survey:show-tech-survey' %}" class="inline-flex items-center text-blue-600 hover:underline">
+                        <a href="{% url 'tech_survey:show-tech-survey' %}"
+                            class="inline-flex items-center text-blue-600 hover:underline">
                             Jelajahi lebih jauh
                         </a>
                     </div>
@@ -330,7 +343,8 @@
                     </div>
                     <div class="transition">
                         <div class="accordion-header cursor-pointer transition flex items-center">
-                            <h2 class="text-white text-lg font-semibold mb-2 mt-4">Apakah saya memerlukan akun untuk menggunakan
+                            <h2 class="text-white text-lg font-semibold mb-2 mt-4">Apakah saya memerlukan akun untuk
+                                menggunakan
                                 situs ini?</h2>
                         </div>
                         <div class="accordion-content mb-2 pt-0 overflow-hidden max-h-0 space-y-4 mr-4 text-sm">
@@ -354,7 +368,8 @@
                     </div>
                     <div class="transition">
                         <div class="accordion-header cursor-pointer transition flex items-center">
-                            <h2 class="text-white text-lg font-semibold mb-2 mt-4">Apakah keamanan pengguna terjamin pada situs
+                            <h2 class="text-white text-lg font-semibold mb-2 mt-4">Apakah keamanan pengguna terjamin
+                                pada situs
                                 ini?</h2>
                         </div>
                         <div class="accordion-content mb-2 pt-0 overflow-hidden max-h-0 space-y-4 mr-4 text-sm">
@@ -366,16 +381,18 @@
                     </div>
                     <div class="transition">
                         <div class="accordion-header cursor-pointer transition flex items-center">
-                            <h2 class="text-white text-lg font-semibold mb-2 mt-4">Tipe kuesioner apa yang digunakan pada survey
+                            <h2 class="text-white text-lg font-semibold mb-2 mt-4">Tipe kuesioner apa yang digunakan
+                                pada survey
                                 Ngetech?</h2>
                         </div>
                         <div class="accordion-content mb-2 pt-0 overflow-hidden max-h-0 space-y-4 mr-4 text-sm">
                             <p class="text-base text-gray-400 mb-4">
-                                Kuesioner yang digunakan pada survey Ngetech memanfaatkan Tipe Skala Likert, menggunakan referensi 
-                                <a href="https://aptika.kominfo.go.id/wp-content/uploads/2020/11/Survei-Literasi-Digital-Indonesia-2020.pdf" 
-                                class="text-blue-500">survey yang dilakukan oleh Kominfo</a> 
-                                untuk mengetahui status Literasi Digital Indonesia, yang diadakan pada tahun 2020. 
-                                Selain itu, survey ini juga dilakukan untuk mengukur minat responden dalam mendukung 
+                                Kuesioner yang digunakan pada survey Ngetech memanfaatkan Tipe Skala Likert, menggunakan
+                                referensi
+                                <a href="https://aptika.kominfo.go.id/wp-content/uploads/2020/11/Survei-Literasi-Digital-Indonesia-2020.pdf"
+                                    class="text-blue-500">survey yang dilakukan oleh Kominfo</a>
+                                untuk mengetahui status Literasi Digital Indonesia, yang diadakan pada tahun 2020.
+                                Selain itu, survey ini juga dilakukan untuk mengukur minat responden dalam mendukung
                                 tujuan G20, terutama pada topik Transformasi Digital.
                             </p>
                         </div>
@@ -386,28 +403,6 @@
     <!-- FAQ Section End -->
 </main>
 
-<script>
-    const accordionHeader = document.querySelectorAll(".accordion-header");
-    accordionHeader.forEach((header) => {
-        header.addEventListener("click", function () {
-            const accordionContent = header.parentElement.querySelector(".accordion-content");
-            const allAccordionContent = document.querySelectorAll('.accordion-content');
-            let accordionMaxHeight = accordionContent.style.maxHeight;
-
-            if (accordionMaxHeight == "0px" || accordionMaxHeight.length == 0) {
-                allAccordionContent.forEach(((content) => {
-                    content.style.maxHeight = `0px`;
-                }))
-                accordionContent.style.maxHeight = `${accordionContent.scrollHeight + 32}px`;
-                header.querySelector(".fas").classList.remove("fa-plus");
-                header.querySelector(".fas").classList.add("fa-minus");
-            } else {
-                accordionContent.style.maxHeight = `0px`;
-                header.querySelector(".fas").classList.add("fa-plus");
-                header.querySelector(".fas").classList.remove("fa-minus");
-            }
-        });
-    });
-</script>
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 
 {% endblock content %}

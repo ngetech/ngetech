@@ -9,25 +9,26 @@
   {% tailwind_css %}
   {% block meta %}
   {% endblock meta %}
+  <link rel="shortcut icon" href="{% static 'img/ngetech_web_icon.png' %}" type="x-icon">
 </head>
 <body class="bg-charcoal-900">
 
 <div class="flex justify-center items-center w-screen h-screen bg-charcoal-900">
     <div
-        class="p-4 w-full max-w-md bg-charcoal-800 rounded-lg shadow-md sm:p-6 md:p-8">
-        <form method="POST" action="" class="rounded px-2 pt-6 pb-8">
+        class="p-4 mx-6 w-full max-w-md bg-charcoal-800 rounded-lg shadow-md sm:p-6 md:p-8">
+        <form method="POST" action="" class="rounded px-2 pt-6 pb-8 m-4">
             <h1 class="text-center text-2xl font-bold text-blue-600 dark:text-gray-300">Login</h1>
             {% csrf_token %}
             <div class="mt-4">
                 <label for="username" class="block mb-2 text-sm font-medium text-gray-400 dark:text-gray-300">Username</label>
             </div>
             <input type="text" name="username" placeholder="Username" required
-                class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                class="form-control block p-2.5 w-full text-sm rounded-lg border  bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
             <div class="mt-4">
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-400 dark:text-gray-300">Password</label>
             </div>
             <input type="password" name="password" placeholder="Password" required
-                class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                class="form-control block p-2.5 w-full text-sm rounded-lg border  bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
             {% if messages %}
 
             {% for message in messages %}
