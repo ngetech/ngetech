@@ -1,5 +1,6 @@
 # NgeTech
 ![deployment](https://github.com/ngetech/ngetech/actions/workflows/dpl.yml/badge.svg)
+![test](https://github.com/ngetech/ngetech/actions/workflows/tests.yml/badge.svg)
 
 ## 👨‍💻 Kudos Developer👩‍💻
 - Wayan Angga Putra Aldita (2106650065)
