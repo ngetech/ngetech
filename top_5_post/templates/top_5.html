@@ -48,6 +48,7 @@
                         $('#post-container').append(
                             `<div class="relative flex flex-wrap flex-col p-8 bg-charcoal-800 rounded-lg shadow-md min-h-[25vh] ${spanTopFiveLayout[i]} hover:bg-charcoal-700">
                                 <div class="flex-wrap justify-start items-start">
+                                    <h2 class="text-gray-400 font-bold text-3xl mb-2">#${i+1}</h2>
                                     <h5 class="mb-2 text-3xl font-semibold tracking-tight text-white">${sortResult[i].fields.title}</h5>
                                     <h5 class="mb-2 text-sm font-semibold tracking-tight text-gray-500">Published by <span class="text-blue-500">@${sortResult[i].fields.username}</span></h5>
                                     <h5 class="mb-2 text-sm font-semibold tracking-tight text-blue-500">${sortResult[i].fields.likes.length} people like this post!</h5>
@@ -71,6 +72,7 @@
                         $('#post-container').append(
                             `<div class="relative flex flex-wrap flex-col p-8 bg-charcoal-800 rounded-lg shadow-md min-h-[25vh] hover:bg-charcoal-700">
                                 <div class="flex-wrap justify-start items-start">
+                                    <h2 class="text-gray-400 font-bold text-3xl mb-2">#${i+1}</h2>
                                     <h5 class="mb-2 text-3xl font-semibold tracking-tight text-white">${sortResult[i].fields.title}</h5>
                                     <h5 class="mb-2 text-sm font-semibold tracking-tight text-gray-500">Published by <span class="text-blue-500">@${sortResult[i].fields.username}</span></h5>
                                     <h5 class="mb-2 text-sm font-semibold tracking-tight text-blue-500">${sortResult[i].fields.likes.length} people like this post!</h5>
