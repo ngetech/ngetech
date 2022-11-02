@@ -65,7 +65,7 @@ function onlySpaces(str) {
     return str.trim().length === 0;
 }
 
-function createPostTech() {
+const createPostTech = () => {
     const getTitle = $('#post-tech-title').val();
     const getDescription = $('#post-tech-description').val();
     console.log(!onlySpaces(getTitle) && !onlySpaces(getDescription));
@@ -83,9 +83,14 @@ function createPostTech() {
         modal.classList.toggle('hidden');
     }
 }
-$('#button-submit-post-tech').attr(
-    'onclick',
-    `createPostTech()`
-)
 
-getAllPost();
+$('#button-submit-post-tech').click(() => {
+    createPostTech();
+    document.getElementById('post-tech-title').value = '';
+    document.getElementById('post-tech-description').value = '';
+    return false;
+})
+
+$(document).ready(() => {
+    getAllPost();
+});

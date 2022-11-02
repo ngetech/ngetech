@@ -71,7 +71,6 @@
     const currentPostId = $('#post_id').val();
     const currentLoginId = $('#current_login_id').val();
 
-
     function postComment() {
         if ($('#comment').val()) {
             console.log('object');
@@ -86,10 +85,12 @@
             })
         }
     }
-    $(`#button-submit-post-comment`).attr(
-        'onclick',
-        `postComment()`
-    );
+
+    $('#button-submit-post-comment').click(() => {
+        postComment();
+        document.getElementById('comment').value = '';
+        return false;
+    })
 
     function getUserComment() {
         $('#comment-container').empty();
@@ -171,8 +172,11 @@
         `likePost(${currentPostId})`
     );
 
-    getUserComment()
-    getPostLikes()
+    $(document).ready(() => {
+        getUserComment()
+        getPostLikes()
+    });
+
 </script>
 
 {% endblock content %}
