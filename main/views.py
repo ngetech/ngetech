@@ -6,6 +6,9 @@ from django.urls import reverse
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
+from .forms import LoginForm
+from .forms import RegisterForm
+from django.contrib.auth.forms import UserCreationForm  
 
 
 def home(request):
@@ -15,18 +18,18 @@ def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(request,username=username,password=password)
         if user is not None:
-            login(request, user) # melakukan login terlebih dahulu
-            response = HttpResponseRedirect(reverse("main:home")) # membuat response
-            response.set_cookie('last_login', str(datetime.datetime.now())) # membuat cookie last_login dan menambahkannya ke dalam response
+            login(request,user)
+            response = HttpResponseRedirect(reverse("main:home"))
+            response.set_cookie('last_login',str(datetime.datetime.now()))
             return response
         else:
-            messages.info(request, 'Username atau Password salah!')
-    context = {}
-    return render(request, 'login.html', context)  
+            messages.info(request,'Username atau Password salah')
+    context = {'login_form':LoginForm()}
+    return render(request,'login.html',context)
 
-def regist_user(request):
+def register_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password_1 = request.POST.get('password1')
@@ -45,7 +48,8 @@ def regist_user(request):
             messages.info(request,'User already exist')
         else:
             messages.info(request,'Ops! something went wrong')
-    return render(request,'register.html',{})
+    form = {'register_form':RegisterForm()}
+    return render(request,'register.html',form)
 
 def logout_user(request):
     logout(request)
