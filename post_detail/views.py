@@ -6,12 +6,14 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 from django.http import HttpResponse, JsonResponse
+from post_detail.forms import PostCommentForm
 
 @login_required(login_url='/login/')
 def show_post_detail(request, key):
     post = PostTech.objects.get(pk=key)
     context = {
-        'post': post
+        'post': post,
+        'form': PostCommentForm()
     }
     return render(request, 'post_detail_index.html', context)
 
