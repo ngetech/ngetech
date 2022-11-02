@@ -32,13 +32,15 @@ def add_post_tech(request):
         title = request.POST.get('title')
         description = request.POST.get('description')
         if  title is not None and description is not None:
-            post = PostTech.objects.create(
+            PostTech.objects.create(
                 user=user,
                 username=user,
                 title=title,
                 description=description
             )
-            return HttpResponse(f"Succesfully create discussion (id: {post.pk})")
+            return JsonResponse({
+                'error': False
+            })
     return HttpResponseBadRequest("Bad request")
 
 @login_required(login_url='/login/')
