@@ -1007,10 +1007,6 @@ select {
   margin-right: auto;
 }
 
-.-ml-1 {
-  margin-left: -0.25rem;
-}
-
 .mb-\[10vh\] {
   margin-bottom: 10vh;
 }
@@ -1025,6 +1021,10 @@ select {
 
 .ml-10 {
   margin-left: 2.5rem;
+}
+
+.-ml-1 {
+  margin-left: -0.25rem;
 }
 
 .mt-5 {
@@ -1109,16 +1109,16 @@ select {
   height: 1.5rem;
 }
 
-.h-5 {
-  height: 1.25rem;
-}
-
 .h-12 {
   height: 3rem;
 }
 
 .h-\[50vh\] {
   height: 50vh;
+}
+
+.h-5 {
+  height: 1.25rem;
 }
 
 .max-h-0 {
@@ -1165,16 +1165,16 @@ select {
   width: 1.5rem;
 }
 
-.w-5 {
-  width: 1.25rem;
-}
-
 .w-12 {
   width: 3rem;
 }
 
 .w-2\/3 {
   width: 66.666667%;
+}
+
+.w-5 {
+  width: 1.25rem;
 }
 
 .min-w-0 {
