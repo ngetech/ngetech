@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import datetime
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.contrib import messages
@@ -8,8 +8,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from .forms import LoginForm
 from .forms import RegisterForm
-from django.contrib.auth.forms import UserCreationForm  
-
+from django.views.decorators.csrf import csrf_exempt
 
 def home(request):
     return render(request, 'index.html')
@@ -56,3 +55,58 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:home'))
     response.delete_cookie('last_login')
     return response
+
+@csrf_exempt
+def flutter_login_user(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            return JsonResponse({
+              "status": True,
+              "username": request.user.username,
+              "message": "Successfully Logged In!"
+            }, status=200)
+        else:
+            return JsonResponse({
+              "status": False,
+              "message": "Failed to Login, Account Disabled."
+            }, status=401)
+
+    else:
+        return JsonResponse({
+          "status": False,
+          "message": "Failed to Login, check your email/password."
+        }, status=401)
+
+@csrf_exempt
+def flutter_register_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password1')
+        user = User.objects.create_user(username=username,password=password)
+        user.save()
+        return JsonResponse({
+            "status": True,
+            "username": user.username,
+        }, status=200)
+    else:
+        return JsonResponse({
+            "status": "error"
+        }, status=401)
+
+@csrf_exempt
+def flutter_logout_user(request):
+    try:
+        logout(request)
+        return JsonResponse({
+            "status": True,
+            "message": "Successfully Logged out!"
+        }, status=200)
+    except:
+        return JsonResponse({
+          "status": False,
+          "message": "Failed to Logout"
+        }, status=401)
