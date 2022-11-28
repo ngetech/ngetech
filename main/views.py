@@ -59,7 +59,6 @@ def logout_user(request):
 @csrf_exempt
 def flutter_login_user(request):
     username = request.POST['username']
-    print(username + "from respn")
     password = request.POST['password']
     user = authenticate(username=username, password=password)
     if user is not None:
@@ -87,12 +86,19 @@ def flutter_register_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = User.objects.create_user(username=username,password=password)
-        user.save()
-        return JsonResponse({
-            "status": True,
-            "username": user.username,
-        }, status=200)
+        is_user_already_exist = User.objects.filter(username=username).exists();
+        if not is_user_already_exist:
+            user = User.objects.create_user(username=username,password=password)
+            user.save()
+            return JsonResponse({
+                "status": True,
+                "username": user.username,
+            }, status=200)
+        else:
+            return JsonResponse({
+              "status": False,
+              "message": "Failed to register, username already exist."
+            }, status=401)
     else:
         return JsonResponse({
             "status": "error"
