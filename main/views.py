@@ -78,7 +78,7 @@ def flutter_login_user(request):
     else:
         return JsonResponse({
           "status": False,
-          "message": "Failed to Login, check your email/password."
+          "message": f"Failed to Login as {username}, check your email/password."
         }, status=401)
 
 @csrf_exempt
