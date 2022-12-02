@@ -1,5 +1,5 @@
 # NgeTech
-![deployment](https://github.com/ngetech/ngetech/actions/workflows/dpl.yml/badge.svg)
+
 ![test](https://github.com/ngetech/ngetech/actions/workflows/tests.yml/badge.svg)
 
 ## 👨‍💻 Kudos Developer👩‍💻
@@ -11,7 +11,7 @@
 - Abdillah Sulthan Naufal Panggabean (2106637555)
 
 ## 🚀 Situs NgeTech 🚀
-Kunjungi official website kami [di sini](https://ngetech.herokuapp.com/ )
+Kunjungi official website kami [di sini](https://ngetech.up.railway.app/)
 
 ## 📰 Sekilas Tentang Kami 📰
 NgeTech adalah segala hal yang berkaitan dengan teknologi masa kini. NgeTech menawarkan banyak hal bagi penggunanya mulai dari berbagai informasi mengenai teknologi masa kini, ulasan informasi, hingga forum untuk berdiskusi.
