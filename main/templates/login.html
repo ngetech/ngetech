@@ -1,58 +1,77 @@
-
 {% load static %}
-{% load tailwind_tags %}
 {% load filters %}
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% tailwind_css %}
-  {% block meta %}
-  {% endblock meta %}
-  <link rel="shortcut icon" href="{% static 'img/ngetech_web_icon.png' %}" type="x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: {
+                            900: '#0F1112',
+                            800: '#151718',
+                            700: '#181A1E',
+                            600: '#55565C',
+                        }
+                    }
+                },
+            }
+        }
+    </script>
+    {% block meta %}
+    {% endblock meta %}
+    <link rel="shortcut icon" href="{% static 'img/ngetech_web_icon.png' %}" type="x-icon">
 </head>
+
 <body class="bg-charcoal-900">
 
-<div class="flex justify-center items-center w-screen h-screen bg-charcoal-900">
-    <div
-        class="p-4 mx-6 w-full max-w-md bg-charcoal-800 rounded-lg shadow-md sm:p-6 md:p-8">
-        <form method="POST" action="" class="rounded px-2 pt-6 pb-8 m-4">
-            <h1 class="text-center text-2xl font-bold text-blue-600 dark:text-gray-300">Login</h1>
-            {% csrf_token %}
-            <div class="mt-4">
-                <label for="username" class="block mb-2 text-sm font-medium text-gray-400 dark:text-gray-300">Username</label>
-            </div>
-            {{ login_form.username|addclass:"form-control block p-2.5 w-full text-sm rounded-lg border  bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"}}
-            <div class="mt-4">
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-400 dark:text-gray-300">Password</label>
-            </div>
-            {{ login_form.password|addclass:"form-control block p-2.5 w-full text-sm rounded-lg border  bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"}}
+    <div class="flex justify-center items-center w-screen h-screen bg-charcoal-900">
+        <div class="p-4 mx-6 w-full max-w-md bg-charcoal-800 rounded-lg shadow-md sm:p-6 md:p-8">
+            <form method="POST" action="" class="rounded px-2 pt-6 pb-8 m-4">
+                <h1 class="text-center text-2xl font-bold text-blue-600 dark:text-gray-300">Login</h1>
+                {% csrf_token %}
+                <div class="mt-4">
+                    <label for="username"
+                        class="block mb-2 text-sm font-medium text-gray-400 dark:text-gray-300">Username</label>
+                </div>
+                {{ login_form.username|addclass:"form-control block p-2.5 w-full text-sm rounded-lg border
+                bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500
+                focus:border-blue-500"}}
+                <div class="mt-4">
+                    <label for="password"
+                        class="block mb-2 text-sm font-medium text-gray-400 dark:text-gray-300">Password</label>
+                </div>
+                {{ login_form.password|addclass:"form-control block p-2.5 w-full text-sm rounded-lg border
+                bg-charcoal-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500
+                focus:border-blue-500"}}
 
-            {% if messages %}
+                {% if messages %}
 
-            {% for message in messages %}
-            <h1 class="text-sm text-red-500 mt-2">{{ message }}</h1>
-            {% endfor %}
+                {% for message in messages %}
+                <h1 class="text-sm text-red-500 mt-2">{{ message }}</h1>
+                {% endfor %}
 
-            {% endif %}
-            <div class="mt-6">
-                <button
-                    class="btn login_btn w-full bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="submit" value="Login">
-                    Login
-                </button>
-            </div>
-            <h1 class="mt-2 text-gray-400 text-base text-center dark:text-gray-300">Don't have an account yet? <a class="text-blue-600"
-                    href="{% url 'main:register' %}">Create Account</a></h1>
-        </form>
+                {% endif %}
+                <div class="mt-6">
+                    <button
+                        class="btn login_btn w-full bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="submit" value="Login">
+                        Login
+                    </button>
+                </div>
+                <h1 class="mt-2 text-gray-400 text-base text-center dark:text-gray-300">Don't have an account yet? <a
+                        class="text-blue-600" href="{% url 'main:register' %}">Create Account</a></h1>
+            </form>
+        </div>
     </div>
-</div>
 </body>
 
 {% include 'footer.html' %}
+
 </html>
-
-
-

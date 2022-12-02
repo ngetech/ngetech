@@ -1,5 +1,4 @@
 <!-- {% load static %} -->
-{% load tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +6,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  {% tailwind_css %}
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            charcoal: {
+              900: '#0F1112',
+              800: '#151718',
+              700: '#181A1E',
+              600: '#55565C',
+            }
+          }
+        },
+      }
+    }
+  </script>
   {% block meta %}
   {% endblock meta %}
   <link rel="shortcut icon" href="{% static 'img/ngetech_web_icon.png' %}" type="x-icon">
