@@ -1,1 +1,1 @@
- web: python manage.py migrate && gunicorn project_django.wsgi
+ web: python manage.py migrate && gunicorn --access-logfile project_django.wsgi
