@@ -9,5 +9,4 @@ def show_top5_post(request):
     
 def get_top5_post(request):
     posts = list(PostTech.objects.all())
-    # ut.sort(key=lambda x: x.count, reverse=True)
     return HttpResponse(serializers.serialize('json', posts),content_type='application/json')
