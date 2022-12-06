@@ -1,5 +1,6 @@
-from django.shortcuts import render
+import json
 import datetime
+from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
@@ -84,8 +85,9 @@ def flutter_login_user(request):
 @csrf_exempt
 def flutter_register_user(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        data = json.loads(request.body)
+        username = data['username']
+        password = data['password']
         is_user_already_exist = User.objects.filter(username=username).exists();
         if not is_user_already_exist:
             user = User.objects.create_user(username=username,password=password)
