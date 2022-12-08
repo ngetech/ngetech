@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.core import serializers
@@ -31,6 +32,10 @@ def add_post_tech(request):
         user = request.user
         title = request.POST.get('title')
         description = request.POST.get('description')
+        if  title is None and description is None:
+            data = json.loads(request.body)
+            title = data['title']
+            description = data['description']
         if  title is not None and description is not None:
             PostTech.objects.create(
                 user=user,
@@ -39,7 +44,7 @@ def add_post_tech(request):
                 description=description
             )
             return JsonResponse({
-                'error': False
+                'error': False,
             });
         else: 
             return JsonResponse({
