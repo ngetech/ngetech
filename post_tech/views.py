@@ -40,7 +40,11 @@ def add_post_tech(request):
             )
             return JsonResponse({
                 'error': False
-            })
+            });
+        else: 
+            return JsonResponse({
+                'error': True
+            });
     return HttpResponseBadRequest("Bad request")
 
 @login_required(login_url='/login/')
