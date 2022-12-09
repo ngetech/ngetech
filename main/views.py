@@ -68,6 +68,7 @@ def flutter_login_user(request):
             return JsonResponse({
               "status": True,
               "username": request.user.username,
+              "user_id": request.user.id,
               "message": "Successfully Logged In!"
             }, status=200)
         else:
