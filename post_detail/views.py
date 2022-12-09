@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 from django.shortcuts import redirect
 from post_tech.models import PostTech
@@ -32,13 +33,18 @@ def add_post_comment(request):
         user = request.user
         post_id = request.POST.get('post_id')
         comment = request.POST.get('comment')
-        PostComment.objects.create(
-            user=user,
-            username=user,
-            post=PostTech.objects.get(pk=post_id),
-            comment=comment,
-        )
-        return JsonResponse({
-            'error': False, 
-            'msg':'Successful'
-        })
+        if  post_id is None and comment is None:
+            data = json.loads(request.body)
+            post_id = data['post_id']
+            comment = data['comment']
+        if post_id is not None and comment is not None:
+            PostComment.objects.create(
+                user=user,
+                username=user,
+                post=PostTech.objects.get(pk=post_id),
+                comment=comment,
+            )
+            return JsonResponse({
+                'error': False, 
+                'msg':'Successful'
+            })
