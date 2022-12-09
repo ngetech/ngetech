@@ -37,19 +37,14 @@ def add_post_comment(request):
             data = json.loads(request.body)
             post_id = data['post_id']
             comment = data['comment']
-        if post_id is not None and comment is not None:
-            PostComment.objects.create(
-                user=user,
-                username=user,
-                post=PostTech.objects.get(pk=post_id),
-                comment=comment,
-            )
-            return JsonResponse({
-                'error': False, 
-                'msg':'Successful'
-            })
+        PostComment.objects.create(
+            user=user,
+            username=user,
+            post=PostTech.objects.get(pk=post_id),
+            comment=comment,
+        )
         return JsonResponse({
-            'error': True, 
-            'msg':'Error'
+            'error': False, 
+            'msg':'Successful'
         })
     return HttpResponseBadRequest("Bad request")
