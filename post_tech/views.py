@@ -79,3 +79,21 @@ def add_likes(request, key):
     except:
         return HttpResponseNotFound(f"User not exist in likes with post id: {id}")
 
+@login_required(login_url='/login/')
+@csrf_exempt
+def get_likes(request, key):
+    if request.method == 'GET':
+        post = PostTech.objects.get(pk=key).likes.all()
+        is_like = False
+        for like in post:
+            if like == request.user:
+                is_like = True
+                break
+        return JsonResponse({
+            'error': False, 
+            'likes_count': len(post),
+            'is_liked': is_like,
+        })
+    return HttpResponseBadRequest("Bad request")
+
+
