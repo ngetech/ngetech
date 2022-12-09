@@ -6,7 +6,7 @@ from post_detail.models import PostComment
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
 from post_detail.forms import PostCommentForm
 
 @login_required(login_url='/login/')
@@ -48,3 +48,8 @@ def add_post_comment(request):
                 'error': False, 
                 'msg':'Successful'
             })
+        return JsonResponse({
+            'error': True, 
+            'msg':'Error'
+        })
+    return HttpResponseBadRequest("Bad request")

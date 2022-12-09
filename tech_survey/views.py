@@ -1,9 +1,10 @@
 import json
 import datetime
 from django.shortcuts import render, redirect
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from .forms import TechSurveyForm
 from .models import HasilTechSurvey
+from django.views.decorators.csrf import csrf_exempt
 
 def show_tech_survey(request):
     form = TechSurveyForm()
@@ -51,3 +52,49 @@ def get_result_json(request):
             return JsonResponse({'error': form.errors})
     else:
         return redirect('tech_survey:show-tech-survey')
+
+@csrf_exempt
+def post_survey_result_for_flutter(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        total_score = data['total_score']
+        result = ''
+        if total_score is not None:
+            if total_score >= 20:
+                result = "Sobat Ngetech abiez!"
+            elif total_score >= 15:
+                result = "Tech enthusiasts"
+            elif total_score >= 10:
+                result = "Great start!"
+            elif total_score >= 5:
+                result = "Ngetech lagi yuk!"
+            else:
+                result = "Kurang ngetech"
+
+            date = history.date.astimezone().strftime("%b %d, %Y, %I:%M %p")
+
+            if request.user.is_authenticated:
+                history = HasilTechSurvey.objects.filter(owner=request.user).first()
+                if history:
+                    history.result = result
+                    history.save()
+                else:
+                    history = HasilTechSurvey(
+                        owner=request.user, 
+                        result=result,
+                    )
+                    history.save()
+            
+            return JsonResponse({
+                'status': True,
+                'result': result,
+                'date': date,
+            })
+
+        else:
+            JsonResponse({
+                'status': False,
+                'message': 'error'
+            })
+
+        
