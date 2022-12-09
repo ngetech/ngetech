@@ -71,7 +71,10 @@ def add_likes(request, key):
             if is_like:
                 post.likes.remove(request.user)
 
-            return JsonResponse({'error': False})
+            return JsonResponse({
+                'error': False, 
+                'is_liked': not is_like,
+            })
         return HttpResponseBadRequest("Bad request")
     except:
         return HttpResponseNotFound(f"User not exist in likes with post id: {id}")
