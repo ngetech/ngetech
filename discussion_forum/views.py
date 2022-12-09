@@ -2,6 +2,7 @@ from django.core import serializers
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotFound, JsonResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 from discussion_forum.models import ForumDiscussion, ForumReply
 from discussion_forum.forms import DiscussionForm, ReplyForm
 
@@ -17,6 +18,7 @@ def create_discussion(req):
     return render(req, 'create_discussion.html', context)
 
 @login_required(login_url='/login/')
+@csrf_exempt
 def post_discussion(req):
     if req.method == "POST":
         form = DiscussionForm(req.POST)
@@ -68,6 +70,7 @@ def get_discussion_replies(req, id):
         return HttpResponseNotFound(f"Discussion not exist (id: {id})")
 
 @login_required(login_url='/login/')
+@csrf_exempt
 def add_discussion_reply(req, id):
     try:
         if req.method == "POST":
@@ -96,6 +99,7 @@ def add_discussion_reply(req, id):
         return HttpResponseNotFound(f"Discussion not exist (id: {id})")
 
 @login_required(login_url='/login/')
+@csrf_exempt
 def add_nested_reply(req, id):
     try:
         if req.method == "POST":
