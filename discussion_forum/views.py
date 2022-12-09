@@ -21,14 +21,20 @@ def create_discussion(req):
 @login_required(login_url='/login/')
 @csrf_exempt
 def post_discussion(req):
+    body = req.body
     if req.method == "POST":
         title = req.POST.get("title")
         content = req.POST.get("content")
 
-        if title is None or content is None:
-            data = json.loads(req.body)
-            title = data['title']
-            content = data['content']
+        try:
+            data = json.loads(body)
+            if title is None:
+                title = data['title']
+
+            if content is None:
+                content = data['content']
+        except:
+            pass
 
         if title is not None and title != "" and content is not None and content != "":
             obj = ForumDiscussion.objects.create(title=title, content=content, user=req.user)
@@ -83,11 +89,15 @@ def get_discussion_replies(req, id):
 def add_discussion_reply(req, id):
     try:
         if req.method == "POST":
+            body = req.body
             content = req.POST.get("content")
 
-            if content is None:
-                data = json.loads(req.body)
-                content = data['content']
+            try:
+                data = json.loads(body)
+                if content is None:
+                    content = data['content']
+            except:
+                pass
 
             if content is not None and content != "":
                 discussion = ForumDiscussion.objects.get(pk=id)
@@ -117,15 +127,21 @@ def add_discussion_reply(req, id):
 def add_nested_reply(req, id):
     try:
         if req.method == "POST":
+            body = req.body
             content = req.POST.get("content")
             user = req.POST.get("user")
 
-            if user is None or content is None:
-                data = json.loads(req.body)
-                user = data['user']
-                content = data['content']
+            try:
+                data = json.loads(body)
+                if content is None:
+                    content = data['content']
 
-            if content is not None and content != "" and user is not None and user != "":
+                if user is None:
+                    user = data['user']
+            except:
+                pass
+
+            if content is not None and content != "":
                 reply_parent = ForumReply.objects.get(pk=id)
                 reply = ForumReply.objects.create(content=content, reply=reply_parent, user=req.user, replying_to=user)
 
