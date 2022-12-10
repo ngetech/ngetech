@@ -146,6 +146,7 @@ def add_nested_reply(req, id):
                 reply = ForumReply.objects.create(content=content, reply=reply_parent, user=req.user, replying_to=user)
 
                 response = {
+                    "error": False,
                     "user": req.user.username,
                     "reply": {
                         "pk": reply.pk,
