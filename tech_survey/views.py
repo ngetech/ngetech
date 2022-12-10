@@ -56,58 +56,43 @@ def get_result_json(request):
 
 @csrf_exempt
 def get_current_result_for_flutter(request):
-    if request.user.is_authenticated:
-        riwayat = HasilTechSurvey.objects.filter(owner=request.user).first()
-    else:
-        riwayat = None
-    return JsonResponse({
-        'user': riwayat.owner.username,
-        'result': riwayat.result
-    })
-
-@csrf_exempt
-def post_survey_result_for_flutter(request):
-    if request.method == 'POST':
-        data = json.loads(request.body)
-        total_score = data['total_score']
-        result = ''
-        if total_score is not None:
-            if total_score >= 20:
-                result = "Sobat Ngetech abiez!"
-            elif total_score >= 15:
-                result = "Tech enthusiasts"
-            elif total_score >= 10:
-                result = "Great start!"
-            elif total_score >= 5:
-                result = "Ngetech lagi yuk!"
-            else:
-                result = "Kurang ngetech"
-
-            date = history.date.astimezone().strftime("%b %d, %Y, %I:%M %p")
-
-            if request.user.is_authenticated:
-                history = HasilTechSurvey.objects.filter(owner=request.user).first()
-                if history:
-                    history.result = result
-                    history.save()
-                else:
-                    history = HasilTechSurvey(
-                        owner=request.user, 
-                        result=result,
-                    )
-                    history.save()
-            
-            return JsonResponse({
-                'status': True,
-                'result': result,
-                'date': date,
-            })
-
+    if request.method == 'GET':
+        if request.user.is_authenticated:
+            riwayat = HasilTechSurvey.objects.filter(owner=request.user).first()
+            if riwayat:
+                return JsonResponse({
+                    'user': riwayat.owner.username,
+                    'result': riwayat.result
+                })
+            else: 
+                return JsonResponse({
+                    'result': '', 
+                    'date': ''
+                })
         else:
             JsonResponse({
                 'status': False,
                 'message': 'error'
             })
+    return HttpResponseBadRequest("Bad request")  
+
+@csrf_exempt
+def post_survey_result_for_flutter(request):
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            data = json.loads(request.body)
+            result = data['result']
+            
+            history = HasilTechSurvey.objects.filter(owner=request.user).first()
+            if history:
+                history.result = result
+                history.save()
+            else:
+                history = HasilTechSurvey(owner=request.user, result=result)
+                history.save()
+                
+        return JsonResponse({"status": "success"})
+
     return HttpResponseBadRequest("Bad request")
 
         
