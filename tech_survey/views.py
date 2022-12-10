@@ -1,9 +1,10 @@
 import json
 import datetime
 from django.shortcuts import render, redirect
-from django.http import JsonResponse
+from django.http import HttpResponseBadRequest, JsonResponse
 from .forms import TechSurveyForm
 from .models import HasilTechSurvey
+from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
 
 def show_tech_survey(request):
@@ -54,6 +55,17 @@ def get_result_json(request):
         return redirect('tech_survey:show-tech-survey')
 
 @csrf_exempt
+def get_current_result_for_flutter(request):
+    if request.user.is_authenticated:
+        riwayat = HasilTechSurvey.objects.filter(owner=request.user).first()
+    else:
+        riwayat = None
+    return JsonResponse({
+        'user': riwayat.owner.username,
+        'result': riwayat.result
+    })
+
+@csrf_exempt
 def post_survey_result_for_flutter(request):
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -96,5 +108,6 @@ def post_survey_result_for_flutter(request):
                 'status': False,
                 'message': 'error'
             })
+    return HttpResponseBadRequest("Bad request")
 
         
