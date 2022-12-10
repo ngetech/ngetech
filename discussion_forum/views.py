@@ -1,3 +1,4 @@
+import json
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotFound, JsonResponse
@@ -20,13 +21,27 @@ def create_discussion(req):
 @login_required(login_url='/login/')
 @csrf_exempt
 def post_discussion(req):
+    body = req.body
     if req.method == "POST":
-        form = DiscussionForm(req.POST)
-        if form.is_valid():
-            title = form.cleaned_data["title"]
-            content = form.cleaned_data["content"]
+        title = req.POST.get("title")
+        content = req.POST.get("content")
+
+        try:
+            data = json.loads(body)
+            if title is None:
+                title = data['title']
+
+            if content is None:
+                content = data['content']
+        except:
+            pass
+
+        if title is not None and title != "" and content is not None and content != "":
             obj = ForumDiscussion.objects.create(title=title, content=content, user=req.user)
-            return HttpResponse(f"Succesfully create discussion (id: {obj.pk})")
+            return JsonResponse({
+                "error": False,
+                "message": f"Succesfully create discussion (id: {obj.pk})"
+            })
 
     return HttpResponseBadRequest("Bad request")
 
@@ -74,13 +89,22 @@ def get_discussion_replies(req, id):
 def add_discussion_reply(req, id):
     try:
         if req.method == "POST":
-            form = ReplyForm(req.POST)
-            if form.is_valid():
+            body = req.body
+            content = req.POST.get("content")
+
+            try:
+                data = json.loads(body)
+                if content is None:
+                    content = data['content']
+            except:
+                pass
+
+            if content is not None and content != "":
                 discussion = ForumDiscussion.objects.get(pk=id)
-                content = form.cleaned_data["content"]
                 reply = ForumReply.objects.create(content=content, discussion=discussion, user=req.user)
 
                 response = {
+                    "error": False,
                     "user": req.user.username,
                     "reply": {
                         "pk": reply.pk,
@@ -103,8 +127,20 @@ def add_discussion_reply(req, id):
 def add_nested_reply(req, id):
     try:
         if req.method == "POST":
+            body = req.body
             content = req.POST.get("content")
             user = req.POST.get("user")
+
+            try:
+                data = json.loads(body)
+                if content is None:
+                    content = data['content']
+
+                if user is None:
+                    user = data['user']
+            except:
+                pass
+
             if content is not None and content != "":
                 reply_parent = ForumReply.objects.get(pk=id)
                 reply = ForumReply.objects.create(content=content, reply=reply_parent, user=req.user, replying_to=user)
