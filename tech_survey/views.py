@@ -62,7 +62,7 @@ def get_current_result_for_flutter(request):
             if riwayat:
                 return JsonResponse({
                     'user': riwayat.owner.username,
-                    'result': riwayat.result
+                    'date': riwayat.date
                 })
             else: 
                 return JsonResponse({
