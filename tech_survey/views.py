@@ -62,6 +62,7 @@ def get_current_result_for_flutter(request):
             if riwayat:
                 return JsonResponse({
                     'user': riwayat.owner.username,
+                    'result': riwayat.result,
                     'date': riwayat.date
                 })
             else: 
@@ -70,9 +71,9 @@ def get_current_result_for_flutter(request):
                     'date': ''
                 })
         else:
-            JsonResponse({
+            return JsonResponse({
                 'status': False,
-                'message': 'error'
+                'message': 'unauthenticated'
             })
     return HttpResponseBadRequest("Bad request")  
 
